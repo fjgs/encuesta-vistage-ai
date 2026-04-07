@@ -25,129 +25,240 @@
             --light-green: #e8f5f2;
             --red: #ff4444;
             --yellow: #ffb800;
-            --font-display: 'Tomato Grotesk', system-ui, sans-serif;
-            --font-body: 'Archivo', system-ui, sans-serif;
+            --display: 'Tomato Grotesk', system-ui, sans-serif;
+            --body: 'Archivo', system-ui, sans-serif;
         }
 
         html { scroll-behavior: smooth; }
-        body { font-family: var(--font-body); color: var(--dark); background: var(--white); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-
-        .container { max-width: 1280px; margin: 0 auto; padding: 0 48px; }
+        body { font-family: var(--body); color: var(--dark); background: var(--white); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 
         /* ===== NAVBAR ===== */
-        .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0; background: rgba(8,8,8,0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.06); }
-        .navbar .container { display: flex; align-items: center; justify-content: space-between; }
-        .navbar-logo { height: 28px; width: auto; }
-        .navbar-tag { font-family: var(--font-display); font-size: 13px; color: rgba(255,255,255,0.4); letter-spacing: 0.04em; }
+        .navbar {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            height: 72px; display: flex; align-items: center;
+            background: rgba(8,8,8,0.8); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        .navbar-inner {
+            width: 100%; max-width: 1920px; margin: 0 auto; padding: 0 48px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .navbar-logo { height: 26px; width: auto; opacity: 0.9; }
+        .navbar-right { display: flex; align-items: center; gap: 20px; }
+        .navbar-vistage {
+            font-family: var(--display); font-size: 18px; font-weight: 700;
+            color: rgba(255,255,255,0.85); letter-spacing: -0.02em;
+        }
+        .navbar-vistage span { color: #0066cc; }
+        .navbar-divider { width: 1px; height: 20px; background: rgba(255,255,255,0.15); }
+        .navbar-group { font-family: var(--display); font-size: 13px; color: rgba(255,255,255,0.35); letter-spacing: 0.04em; }
 
-        /* ===== HERO (squads2 style - left aligned) ===== */
-        .hero { min-height: 100vh; min-height: 100svh; background: var(--dark); color: var(--white); display: flex; align-items: center; position: relative; overflow: hidden; padding-top: 72px; }
-        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 70% 40%, rgba(71,255,203,0.07) 0%, transparent 55%); pointer-events: none; }
-        .hero::after { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0 1px, transparent 1px 25%), repeating-linear-gradient(180deg, rgba(255,255,255,0.02) 0 1px, transparent 1px 25%); pointer-events: none; }
-        .hero-content { position: relative; z-index: 1; max-width: 720px; }
-        .hero-tag { font-family: var(--font-display); font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green-dark); margin-bottom: 24px; opacity: 0; animation: fadeUp 0.7s ease-out 0.2s forwards; }
-        .hero h1 { font-family: var(--font-display); font-size: clamp(40px, 6.5vw, 78px); font-weight: 400; line-height: 0.98; letter-spacing: -0.03em; opacity: 0; animation: fadeUp 0.7s ease-out 0.35s forwards; }
+        /* ===== HERO (squads2 exact) ===== */
+        .hero {
+            position: relative; overflow: hidden; background: black;
+            height: calc(100vh - 72px); margin-top: 72px;
+        }
+        /* Grid lines */
+        .hero-grid { position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none; }
+        .hero-grid-line { position: absolute; top: 0; height: 100%; width: 1px; background: rgba(255,255,255,0.07); }
+        /* Glow */
+        .hero-glow {
+            position: absolute; bottom: -100px; right: 10%;
+            width: 600px; height: 400px;
+            background: radial-gradient(ellipse, rgba(71,255,203,0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        /* Content */
+        .hero-layout {
+            position: absolute; inset: 0; z-index: 10;
+            max-width: 1920px; margin: 0 auto; padding: 0 48px;
+            display: flex; flex-direction: column;
+        }
+        .hero-main {
+            flex: 1; display: flex; align-items: center; justify-content: space-between; gap: 64px;
+        }
+        .hero-text { max-width: 700px; }
+        .hero-tag {
+            font-family: var(--display); font-size: 13px; font-weight: 500;
+            letter-spacing: 0.08em; text-transform: uppercase; color: var(--green-dark);
+            margin-bottom: 24px;
+            opacity: 0; animation: fadeUp 0.8s ease both 0.2s;
+        }
+        .hero h1 {
+            font-family: var(--display); font-size: 82px; font-weight: 400;
+            line-height: 0.98; letter-spacing: -0.03em; color: var(--white);
+            opacity: 0; animation: fadeUp 0.8s ease both 0.35s;
+        }
         .hero h1 strong { font-weight: 700; color: var(--green); }
-        .hero-sub { font-size: 19px; color: rgba(255,255,255,0.55); margin-top: 28px; max-width: 520px; line-height: 1.5; opacity: 0; animation: fadeUp 0.7s ease-out 0.5s forwards; }
-        .hero-stats { position: absolute; bottom: 48px; left: 48px; display: flex; gap: 48px; opacity: 0; animation: fadeUp 0.7s ease-out 0.7s forwards; z-index: 1; }
-        .hero-stat-value { font-family: var(--font-display); font-size: 32px; font-weight: 600; color: var(--green-dark); }
-        .hero-stat-label { font-size: 13px; color: rgba(255,255,255,0.35); margin-top: 2px; }
+        .hero-sub {
+            font-size: 20px; color: rgba(255,255,255,0.6); margin-top: 28px;
+            max-width: 540px; line-height: 1.5;
+            opacity: 0; animation: fadeUp 0.8s ease both 0.5s;
+        }
+        /* Illustration */
+        .hero-illustration {
+            position: absolute; right: 48px; top: 50%; transform: translateY(-50%);
+            width: 32vw; max-width: 374px; opacity: 0.35;
+            opacity: 0; animation: fadeUp 0.8s ease both 0.6s;
+        }
+        .hero-illustration img { width: 100%; height: auto; }
+        /* Stats bar */
+        .hero-stats {
+            position: absolute; bottom: 40px; left: 48px; right: 48px;
+            display: flex; align-items: end; justify-content: space-between;
+            opacity: 0; animation: fadeUp 0.8s ease both 0.7s;
+        }
+        .hero-stats-left { display: flex; gap: 56px; }
+        .hero-stat-value {
+            font-family: var(--display); font-size: 62px; font-weight: 400;
+            line-height: 1.05; letter-spacing: -0.03em; color: var(--green-dark);
+        }
+        .hero-stat-label { font-size: 16px; font-weight: 500; color: var(--white); margin-top: 2px; }
+        .hero-scroll {
+            font-family: var(--display); font-size: 14px; color: rgba(255,255,255,0.4);
+            display: flex; align-items: center; gap: 10px;
+        }
+        .hero-scroll-arrow { display: inline-block; animation: bounce 2s infinite; }
 
         /* ===== SECTIONS ===== */
-        section { padding: 96px 0; }
+        section { padding: 104px 0; }
+        .wrap { max-width: 1280px; margin: 0 auto; padding: 0 48px; }
         .bg-dark { background: var(--dark); color: var(--white); }
         .bg-light { background: var(--light); }
         .bg-green { background: var(--light-green); }
 
-        .section-tag { font-family: var(--font-display); font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green-dark); margin-bottom: 20px; }
-        h2 { font-family: var(--font-display); font-size: clamp(30px, 4.5vw, 52px); font-weight: 400; line-height: 1.08; letter-spacing: -0.025em; margin-bottom: 0; }
+        .stag { font-family: var(--display); font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green-dark); margin-bottom: 20px; }
+        h2 { font-family: var(--display); font-size: 52px; font-weight: 400; line-height: 1.08; letter-spacing: -0.025em; }
         h2 strong { font-weight: 700; }
-        .section-prose { font-size: 17px; color: rgba(0,0,0,0.6); max-width: 640px; line-height: 1.65; margin-top: 24px; }
-        .bg-dark .section-prose { color: rgba(255,255,255,0.5); }
 
-        /* ===== NARRATIVE BLOCK ===== */
-        .narrative { max-width: 680px; margin-top: 56px; }
-        .narrative p { font-size: 17px; line-height: 1.7; margin-bottom: 24px; }
-        .narrative p:last-child { margin-bottom: 0; }
-        .narrative strong { font-weight: 600; }
-        .narrative .highlight { color: var(--green-dark); font-weight: 600; }
-        .bg-dark .narrative p { color: rgba(255,255,255,0.65); }
-        .bg-dark .narrative .highlight { color: var(--green); }
+        /* Narrative text */
+        .prose { max-width: 660px; margin-top: 28px; }
+        .prose p { font-size: 17px; line-height: 1.72; margin-bottom: 20px; color: rgba(0,0,0,0.6); }
+        .prose p:last-child { margin-bottom: 0; }
+        .prose strong { font-weight: 600; color: var(--dark); }
+        .prose .hl { color: var(--green-dark); font-weight: 600; }
+        .bg-dark .prose p { color: rgba(255,255,255,0.55); }
+        .bg-dark .prose strong { color: var(--white); }
+        .bg-dark .prose .hl { color: var(--green); }
 
-        /* ===== STAT CALLOUT ===== */
-        .stat-callout { display: grid; grid-template-columns: auto 1fr; gap: 32px; align-items: start; padding: 40px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; margin-top: 40px; }
-        .stat-callout-number { font-family: var(--font-display); font-size: 52px; font-weight: 700; color: var(--green); line-height: 1; }
-        .stat-callout h3 { font-family: var(--font-display); font-size: 20px; font-weight: 600; color: var(--white); margin-bottom: 8px; }
-        .stat-callout p { font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.55; }
-        .stat-callout .source { font-size: 11px; color: rgba(255,255,255,0.25); margin-top: 10px; font-family: var(--font-display); }
-        .stat-callout .source a { color: rgba(255,255,255,0.35); text-decoration: underline; text-underline-offset: 2px; }
+        /* Evidence card */
+        .evidence {
+            display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+            padding: 36px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 8px; margin-top: 36px;
+        }
+        .evidence-num { font-family: var(--display); font-size: 48px; font-weight: 700; color: var(--green); line-height: 1; }
+        .evidence h3 { font-family: var(--display); font-size: 19px; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+        .evidence p { font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.55; }
+        .evidence .src { font-size: 11px; color: rgba(255,255,255,0.22); margin-top: 10px; font-family: var(--display); }
+        .evidence .src a { color: rgba(255,255,255,0.32); text-decoration: underline; text-underline-offset: 2px; }
+        .evidence.warn { border-color: rgba(255,68,68,0.18); background: rgba(255,68,68,0.03); }
+        .evidence.warn .evidence-num { color: var(--red); }
+        .evidence.on-light { background: var(--white); border-color: rgba(0,0,0,0.08); }
+        .evidence.on-light .evidence-num { color: var(--green-dark); }
+        .evidence.on-light h3 { color: var(--dark); }
+        .evidence.on-light p { color: rgba(0,0,0,0.55); }
+        .evidence.on-light .src { color: rgba(0,0,0,0.3); }
+        .evidence.on-light .src a { color: rgba(0,0,0,0.4); }
 
-        .stat-callout.alarm { border-color: rgba(255,68,68,0.2); background: rgba(255,68,68,0.04); }
-        .stat-callout.alarm .stat-callout-number { color: var(--red); }
-
-        .stat-callout.on-light { background: var(--white); border-color: rgba(0,0,0,0.08); }
-        .stat-callout.on-light .stat-callout-number { color: var(--red); }
-        .stat-callout.on-light h3 { color: var(--dark); }
-        .stat-callout.on-light p { color: rgba(0,0,0,0.55); }
-        .stat-callout.on-light .source { color: rgba(0,0,0,0.3); }
-        .stat-callout.on-light .source a { color: rgba(0,0,0,0.4); }
-
-        /* ===== PAIN GRID ===== */
-        .pain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 56px; }
+        /* Pain grid */
+        .pain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 48px; }
         .pain-card { padding: 36px 28px; background: var(--white); }
-        .pain-number { font-family: var(--font-display); font-size: 48px; font-weight: 700; line-height: 1; margin-bottom: 12px; }
-        .pain-card:nth-child(1) .pain-number { color: var(--red); }
-        .pain-card:nth-child(2) .pain-number { color: var(--yellow); }
-        .pain-card:nth-child(3) .pain-number { color: var(--red); }
-        .pain-label { font-family: var(--font-display); font-size: 15px; font-weight: 600; margin-bottom: 8px; }
-        .pain-desc { font-size: 14px; color: rgba(0,0,0,0.55); line-height: 1.55; }
+        .pain-num { font-family: var(--display); font-size: 56px; font-weight: 700; line-height: 1; margin-bottom: 12px; }
+        .c-red { color: var(--red); }
+        .c-yellow { color: var(--yellow); }
+        .pain-label { font-family: var(--display); font-size: 15px; font-weight: 600; margin-bottom: 8px; }
+        .pain-desc { font-size: 14px; color: rgba(0,0,0,0.5); line-height: 1.6; }
 
-        /* ===== AREAS GRID ===== */
-        .areas-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 48px; }
-        .area-card { padding: 32px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); }
-        .area-card:hover { border-color: var(--green); transition: border-color 0.3s; }
-        .area-percent { font-family: var(--font-display); font-size: 36px; font-weight: 700; color: var(--green); margin-bottom: 6px; }
-        .area-name { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--white); margin-bottom: 4px; }
-        .area-detail { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.5; }
+        /* Areas grid */
+        .areas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 48px; }
+        .area { padding: 32px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); transition: border-color 0.3s; }
+        .area:hover { border-color: rgba(71,255,203,0.3); }
+        .area-pct { font-family: var(--display); font-size: 40px; font-weight: 700; color: var(--green); margin-bottom: 6px; }
+        .area-name { font-family: var(--display); font-size: 15px; font-weight: 600; color: var(--white); margin-bottom: 4px; }
+        .area-sub { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.5; }
 
-        /* ===== QUOTE ===== */
-        .quote-block { border-left: 3px solid var(--green-dark); padding: 28px 36px; margin-top: 40px; background: rgba(0,0,0,0.02); border-radius: 0 6px 6px 0; }
-        .quote-block p { font-family: var(--font-display); font-size: 20px; font-weight: 500; line-height: 1.45; }
-        .bg-dark .quote-block { background: rgba(71,255,203,0.04); }
-        .bg-dark .quote-block p { color: var(--white); }
+        /* Case mini */
+        .case-block {
+            margin-top: 40px; padding: 32px 36px;
+            background: rgba(71,255,203,0.03); border-left: 3px solid var(--green-dark);
+            border-radius: 0 8px 8px 0;
+        }
+        .case-block.on-light { background: rgba(23,225,192,0.05); }
+        .case-block h4 { font-family: var(--display); font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+        .bg-dark .case-block h4 { color: var(--white); }
+        .case-block p { font-size: 15px; line-height: 1.6; }
+        .bg-dark .case-block p { color: rgba(255,255,255,0.5); }
+        .case-block p { color: rgba(0,0,0,0.55); }
+        .case-tag { font-family: var(--display); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--green-dark); margin-bottom: 8px; }
 
-        /* ===== CTA ===== */
-        .cta-section { padding: 104px 0; position: relative; }
-        .cta-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 50% 80%, rgba(71,255,203,0.06) 0%, transparent 55%); pointer-events: none; }
-        .cta-inner { max-width: 640px; position: relative; z-index: 1; }
-        .cta-inner h2 { margin-bottom: 20px; }
-        .cta-inner .section-prose { margin-top: 0; margin-bottom: 0; }
+        /* Quote */
+        .quote {
+            border-left: 3px solid var(--green-dark); padding: 24px 32px;
+            margin-top: 36px; border-radius: 0 6px 6px 0;
+        }
+        .quote p { font-family: var(--display); font-size: 20px; font-weight: 500; line-height: 1.4; }
+        .bg-dark .quote { background: rgba(71,255,203,0.03); }
+        .bg-dark .quote p { color: var(--white); }
 
-        /* ===== SOURCES ===== */
+        /* Footnote / soft close */
+        .footnote {
+            margin-top: 56px; padding-top: 36px; border-top: 1px solid rgba(255,255,255,0.06);
+        }
+        .footnote p { font-size: 15px; color: rgba(255,255,255,0.35); line-height: 1.6; max-width: 560px; }
+        .footnote strong { color: rgba(255,255,255,0.55); }
+
+        /* Sources */
         .sources { padding: 40px 0; background: #050505; }
-        .sources-tag { font-family: var(--font-display); font-size: 12px; color: rgba(255,255,255,0.25); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 16px; }
+        .sources-tag { font-family: var(--display); font-size: 12px; color: rgba(255,255,255,0.2); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 16px; }
         .sources-list { list-style: none; columns: 2; column-gap: 40px; }
-        .sources-list li { font-size: 12px; color: rgba(255,255,255,0.2); margin-bottom: 6px; break-inside: avoid; line-height: 1.5; }
-        .sources-list a { color: rgba(255,255,255,0.3); text-decoration: underline; text-underline-offset: 2px; }
+        .sources-list li { font-size: 11px; color: rgba(255,255,255,0.18); margin-bottom: 6px; break-inside: avoid; line-height: 1.5; }
+        .sources-list a { color: rgba(255,255,255,0.28); text-decoration: underline; text-underline-offset: 2px; }
 
-        /* ===== FOOTER ===== */
-        .footer { background: #000; color: rgba(255,255,255,0.2); padding: 24px 0; text-align: center; font-size: 13px; font-family: var(--font-display); }
+        /* Footer */
+        .footer { background: #000; color: rgba(255,255,255,0.15); padding: 24px 0; text-align: center; font-size: 13px; font-family: var(--display); }
 
         /* ===== ANIMATIONS ===== */
-        @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .animate { opacity: 0; transform: translateY(20px); transition: all 0.65s ease-out; }
-        .animate.visible { opacity: 1; transform: translateY(0); }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(4px); } }
+        @keyframes countUp { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+        .anim { opacity: 0; transform: translateY(24px); transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+        .anim.visible { opacity: 1; transform: translateY(0); }
+        .anim-delay-1 { transition-delay: 0.1s; }
+        .anim-delay-2 { transition-delay: 0.2s; }
+        .anim-delay-3 { transition-delay: 0.3s; }
 
-        /* ===== MOBILE ===== */
+        .num-anim { display: inline-block; }
+        .num-anim.visible { animation: countUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1400px) {
+            .hero h1 { font-size: 68px; }
+            .hero-illustration { max-width: 300px; }
+            .hero-stat-value { font-size: 48px; }
+        }
+        @media (max-width: 1200px) {
+            .hero h1 { font-size: 58px; }
+            .hero-illustration { max-width: 250px; }
+            h2 { font-size: 42px; }
+        }
         @media (max-width: 900px) {
-            .container { padding: 0 24px; }
-            section { padding: 64px 0; }
-            .hero-stats { position: relative; bottom: auto; left: auto; margin-top: 48px; flex-wrap: wrap; gap: 24px; }
-            .pain-grid, .areas-grid { grid-template-columns: 1fr; }
-            .stat-callout { grid-template-columns: 1fr; }
-            .stat-callout-number { font-size: 40px; }
+            .navbar-inner, .wrap { padding: 0 24px; }
+            .hero-layout { padding: 0 24px; }
+            .hero-stats { left: 24px; right: 24px; }
+            section { padding: 72px 0; }
+            .hero h1 { font-size: 44px; }
+            .hero-sub { font-size: 17px; }
+            .hero-illustration { display: none; }
+            .hero-stats-left { gap: 32px; }
+            .hero-stat-value { font-size: 40px; }
+            .hero-scroll { display: none; }
+            h2 { font-size: 34px; }
+            .pain-grid, .areas { grid-template-columns: 1fr; }
+            .evidence { grid-template-columns: 1fr; }
+            .evidence-num { font-size: 36px; }
             .sources-list { columns: 1; }
-            .navbar-tag { display: none; }
+            .navbar-divider, .navbar-group { display: none; }
         }
     </style>
 </head>
@@ -155,109 +266,136 @@
 
     <!-- NAVBAR -->
     <nav class="navbar">
-        <div class="container">
+        <div class="navbar-inner">
             <img src="./logo-braintly-white.svg" alt="Braintly" class="navbar-logo">
-            <span class="navbar-tag">Vistage G115 &middot; Abril 2026</span>
+            <div class="navbar-right">
+                <span class="navbar-vistage"><span>V</span>istage</span>
+                <span class="navbar-divider"></span>
+                <span class="navbar-group">G115 &middot; Abril 2026</span>
+            </div>
         </div>
     </nav>
 
-    <!-- HERO (squads2 style - left aligned) -->
+    <!-- HERO (squads2 layout) -->
     <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-tag">Resultados de la encuesta</div>
-                <h1>¿Donde estamos<br>con <strong>AI</strong>?</h1>
-                <p class="hero-sub">Los encueste. Respondieron 13 de 18. Esto es lo que encontre y lo que creo que significa para todos nosotros.</p>
-            </div>
+        <div class="hero-grid">
+            <div class="hero-grid-line" style="left: 25%"></div>
+            <div class="hero-grid-line" style="left: 50%"></div>
+            <div class="hero-grid-line" style="left: 75%"></div>
         </div>
-        <div class="hero-stats">
-            <div>
-                <div class="hero-stat-value">13</div>
-                <div class="hero-stat-label">respuestas</div>
+        <div class="hero-glow"></div>
+
+        <div class="hero-illustration">
+            <img src="./stack.svg" alt="">
+        </div>
+
+        <div class="hero-layout">
+            <div class="hero-main">
+                <div class="hero-text">
+                    <div class="hero-tag">Resultados de la encuesta</div>
+                    <h1>¿Donde estamos<br>con <strong>AI</strong>?</h1>
+                    <p class="hero-sub">Los encueste. Respondieron 13 de 18. Esto es lo que encontre — y lo que creo que significa para nosotros.</p>
+                </div>
             </div>
-            <div>
-                <div class="hero-stat-value">72%</div>
-                <div class="hero-stat-label">del grupo</div>
+
+            <div class="hero-stats">
+                <div class="hero-stats-left">
+                    <div>
+                        <div class="hero-stat-value">13</div>
+                        <div class="hero-stat-label">respuestas</div>
+                    </div>
+                    <div>
+                        <div class="hero-stat-value">72%</div>
+                        <div class="hero-stat-label">del grupo</div>
+                    </div>
+                    <div>
+                        <div class="hero-stat-value">10</div>
+                        <div class="hero-stat-label">preguntas</div>
+                    </div>
+                </div>
+                <div class="hero-scroll">
+                    Scroll para explorar <span class="hero-scroll-arrow">&#8595;</span>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 1: THE WORLD IS MOVING (narrative + data) -->
+    <!-- SECTION 1: CONTEXT — narrative + data woven together -->
     <section class="bg-dark">
-        <div class="container">
-            <div class="section-tag animate">Primero, el contexto</div>
-            <h2 class="animate">Esto no es solo<br><strong>nuestro problema.</strong></h2>
+        <div class="wrap">
+            <div class="stag anim">Primero, el contexto</div>
+            <h2 class="anim">Esto no es solo<br><strong>nuestro problema.</strong></h2>
 
-            <div class="narrative animate">
-                <p>Antes de hablar de la encuesta, quiero compartir algunos datos de afuera. No son de Braintly. Son de McKinsey, BCG, PwC y SAP. Los pongo porque me ayudaron a entender lo que estamos viviendo como grupo.</p>
-                <p>La mitad de las empresas medianas argentinas ya reporta resultados positivos con AI. <span class="highlight">8 de cada 10 PyMEs van a invertir en AI por primera vez este ano.</span> Eso no es futuro. Esta pasando ahora, alrededor nuestro.</p>
-                <p>Pero aca viene lo que me llamo la atencion: a nivel global, <span class="highlight">el 56% de los CEOs dice que no saco nada de su inversion en AI.</span> Nada. Cero revenue, cero ahorro. ¿Y el 12% que si lo hizo bien? Tiene 3 veces mas chances de reportar crecimiento. La diferencia no es cuanta plata ponen. Es <strong>como lo implementan.</strong></p>
+            <div class="prose anim">
+                <p>Antes de ir a nuestros datos, quiero compartir lo que esta pasando afuera. No es para asustar a nadie — es para dimensionar donde estamos parados.</p>
+                <p>La mitad de las empresas medianas argentinas <span class="hl">ya reporta resultados positivos con AI.</span> Y 8 de cada 10 PyMEs van a invertir por primera vez este ano. Eso viene de un estudio de SAP con 200 decisores argentinos y otra encuesta de Microsoft con 100 lideres de PyMEs. Esto no es futuro — esta pasando al lado nuestro.</p>
+                <p>Pero aca viene la parte que duele: <strong>a nivel global, el 56% de los CEOs dice que no saco nada de su inversion en AI.</strong> Cero. Ni revenue, ni ahorro. ¿Y el 12% que si lo hizo bien? Tiene 3 veces mas chances de reportar crecimiento. La diferencia no es cuanto inviertan. Es como lo implementan.</p>
             </div>
 
-            <div class="stat-callout alarm animate">
-                <div class="stat-callout-number">80%</div>
+            <div class="evidence warn anim">
+                <div class="evidence-num">80%</div>
                 <div>
-                    <h3>pone AI encima de procesos viejos. Y no funciona.</h3>
-                    <p>Las empresas que redisenan sus workflows con AI obtienen 2.8x mas impacto que las que simplemente agregan herramientas a lo que ya hacen. No es la herramienta. Es el enfoque.</p>
-                    <div class="source">McKinsey "State of AI", Marzo 2025 &middot; <a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai" target="_blank" rel="noopener">Fuente</a></div>
+                    <h3>pone AI encima de procesos viejos. No funciona.</h3>
+                    <p>Las que redisenan workflows obtienen 2.8x mas impacto. No es cuestion de herramientas — es enfoque. Usar ChatGPT para mails no transforma una empresa. Repensar como fluye el trabajo, si.</p>
+                    <div class="src">McKinsey "State of AI", Mar 2025 &middot; <a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai" target="_blank" rel="noopener">Fuente</a></div>
                 </div>
             </div>
 
-            <div class="stat-callout animate">
-                <div class="stat-callout-number">5%</div>
+            <div class="evidence anim">
+                <div class="evidence-num">5%</div>
                 <div>
-                    <h3>de las empresas son "lideres" en AI. El resto mira.</h3>
-                    <p>Ese 5% tiene 1.7x mas revenue y 3.6x mas retorno al accionista. El 60% restante — los "rezagados" — reporta ganancias minimas. La brecha se agranda cada trimestre que pasa.</p>
-                    <div class="source">BCG "Build for the Future", Sep 2025 &middot; 1.250 ejecutivos &middot; <a href="https://www.prnewswire.com/news-releases/ai-leaders-outpace-laggards-with-double-the-revenue-growth-and-40-more-cost-savings-302570218.html" target="_blank" rel="noopener">Fuente</a></div>
+                    <h3>de las empresas son "lideres" en AI. El 60% mira.</h3>
+                    <p>Ese 5% tiene 1.7x mas revenue y 3.6x mas retorno. El 60% — los rezagados — reporta ganancias minimas. La brecha se agranda, no se achica.</p>
+                    <div class="src">BCG "Build for the Future", Sep 2025 &middot; 1.250 ejecutivos &middot; <a href="https://www.prnewswire.com/news-releases/ai-leaders-outpace-laggards-with-double-the-revenue-growth-and-40-more-cost-savings-302570218.html" target="_blank" rel="noopener">Fuente</a></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 2: THE REALITY CHECK (our data) -->
+    <!-- SECTION 2: OUR DATA — the reality check -->
     <section class="bg-light">
-        <div class="container">
-            <div class="section-tag animate">Nuestros datos</div>
-            <h2 class="animate">Ahora, lo nuestro.<br><strong>Tres numeros que nos deberian incomodar.</strong></h2>
+        <div class="wrap">
+            <div class="stag anim">Nuestros datos</div>
+            <h2 class="anim">Ahora, lo nuestro.</h2>
 
-            <div class="narrative animate">
-                <p>Esto sale de las 13 respuestas del grupo. No es una muestra enorme, pero somos nosotros. Y los patrones son claros.</p>
+            <div class="prose anim">
+                <p>Esto sale de las 13 respuestas. No es una muestra cientifica — somos nosotros. Y los patrones son mas claros de lo que esperaba.</p>
             </div>
 
             <div class="pain-grid">
-                <div class="pain-card animate">
-                    <div class="pain-number">69%</div>
+                <div class="pain-card anim">
+                    <div class="pain-num c-red num-anim">69%</div>
                     <div class="pain-label">Usa AI "para uno"</div>
-                    <div class="pain-desc">7 de cada 10 de nosotros usa AI a nivel personal. Mails, documentos, research. No toca ningun proceso real de la empresa. Es como tener un auto y usarlo solo para escuchar la radio.</div>
+                    <div class="pain-desc">7 de cada 10 usa AI a nivel personal. Mails, documentos, research. No toca la operacion de la empresa. Es como tener un auto y usarlo solo para escuchar la radio.</div>
                 </div>
-                <div class="pain-card animate">
-                    <div class="pain-number">85%</div>
-                    <div class="pain-label">Siente que deberia estar haciendo mas</div>
+                <div class="pain-card anim anim-delay-1">
+                    <div class="pain-num c-yellow num-anim">85%</div>
+                    <div class="pain-label">Siente que deberia hacer mas</div>
                     <div class="pain-desc">Casi todos sentimos la presion. FOMO, culpa, la sensacion de que el reloj corre. Pero sentir no es hacer. Y la brecha entre sentir y hacer es exactamente donde estamos trabados.</div>
                 </div>
-                <div class="pain-card animate">
-                    <div class="pain-number">53%</div>
+                <div class="pain-card anim anim-delay-2">
+                    <div class="pain-num c-red num-anim">53%</div>
                     <div class="pain-label">Trabado en ejecucion</div>
-                    <div class="pain-desc">La mitad dice "avanzamos lento" o "no tengo a quien delegarle." El freno no es que no creemos en AI. Es que no tenemos con quien hacerlo. Ese es el verdadero problema.</div>
+                    <div class="pain-desc">La mitad dice "avanzamos lento" o "no tengo a quien delegarle." El freno no es que no creamos en AI. Es que no tenemos con quien. Ese es el verdadero cuello de botella.</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 3: WHAT'S BLOCKING US (narrative) -->
+    <!-- SECTION 3: THE REAL BLOCKER -->
     <section>
-        <div class="container">
-            <div class="section-tag animate">El freno real</div>
-            <h2 class="animate">No es conviccion.<br><strong>Es capacidad.</strong></h2>
+        <div class="wrap">
+            <div class="stag anim">El freno real</div>
+            <h2 class="anim">No es conviccion.<br><strong>Es capacidad.</strong></h2>
 
-            <div class="narrative animate">
-                <p>Les pregunte que los frena. La respuesta numero uno no es "no creo en AI." No es "no es para mi industria." No es "es muy caro."</p>
-                <p>La respuesta numero uno es: <strong>"Avanzamos lento porque lo hacemos solos."</strong> El 38% dijo exactamente eso. Otro 15% dijo "no tengo a quien delegarle." Sumados, <span class="highlight">el 53% tiene un problema de ejecucion, no de conviccion.</span></p>
-                <p>Saben que hay que hacerlo. Intentan. Pero entre el dia a dia, las urgencias y la falta de alguien que sepa, se queda en la lista de "pendientes importantes."</p>
-                <p>Y mientras tanto, segun McKinsey, el que ya arranco y rediseno procesos esta sacando 2.8 veces mas impacto que el que simplemente le agrego ChatGPT a lo que ya hacia.</p>
+            <div class="prose anim">
+                <p>La respuesta numero uno a "que te frena" no fue "no creo en AI." No fue "es muy caro." No fue "no es para mi industria."</p>
+                <p>Fue: <strong>"Avanzamos lento porque lo hacemos solos."</strong></p>
+                <p>El 38% dijo exactamente eso. Otro 15% dijo "no tengo a quien delegarle." Sumados, mas de la mitad tiene un <span class="hl">problema de ejecucion, no de conviccion.</span> Saben que hay que hacerlo, intentan, pero entre el dia a dia y la falta de alguien que sepa, queda en la lista de pendientes.</p>
+                <p>Y mientras tanto — segun McKinsey — el que ya arranco y rediseno sus procesos esta sacando 2.8 veces mas resultado que el que simplemente le agrego ChatGPT a lo que ya hacia.</p>
             </div>
 
-            <div class="quote-block animate">
+            <div class="quote anim">
                 <p>"El 85% siente urgencia. El 69% sigue haciendolo solo. Esa brecha es la oportunidad — y el riesgo."</p>
             </div>
         </div>
@@ -265,134 +403,115 @@
 
     <!-- SECTION 4: WHERE THE OPPORTUNITY IS -->
     <section class="bg-dark">
-        <div class="container">
-            <div class="section-tag animate">Donde esta la oportunidad</div>
-            <h2 class="animate">No quieren chatbots.<br><strong>Quieren que la operacion funcione.</strong></h2>
+        <div class="wrap">
+            <div class="stag anim">Donde esta la oportunidad</div>
+            <h2 class="anim">No quieren chatbots.<br><strong>Quieren que la operacion funcione.</strong></h2>
 
-            <div class="narrative animate">
-                <p>Les pregunte donde ven mas oportunidad para aplicar AI. Las respuestas me sorprendieron. No es "quiero un chatbot." No es "quiero generar contenido con AI." Las prioridades son operativas. Son las cosas que mueven el negocio todos los dias.</p>
+            <div class="prose anim">
+                <p>Les pregunte en que areas ven oportunidad para AI. Las respuestas me sorprendieron. No es "quiero generar contenido." Las prioridades son operativas — las cosas que mueven el negocio todos los dias.</p>
             </div>
 
-            <div class="areas-grid">
-                <div class="area-card animate">
-                    <div class="area-percent">69%</div>
-                    <div class="area-name">Operaciones y produccion</div>
-                    <div class="area-detail">Logistica, calidad, control de produccion.</div>
-                </div>
-                <div class="area-card animate">
-                    <div class="area-percent">69%</div>
-                    <div class="area-name">Datos y decisiones</div>
-                    <div class="area-detail">KPIs en tiempo real, dejar de ser el "dashboard humano."</div>
-                </div>
-                <div class="area-card animate">
-                    <div class="area-percent">62%</div>
-                    <div class="area-name">Ventas y marketing</div>
-                    <div class="area-detail">Gestion comercial, seguimiento de leads.</div>
-                </div>
-                <div class="area-card animate">
-                    <div class="area-percent">46%</div>
-                    <div class="area-name">Admin y finanzas</div>
-                    <div class="area-detail">Conciliaciones, facturacion, cobranzas.</div>
-                </div>
-                <div class="area-card animate">
-                    <div class="area-percent">31%</div>
-                    <div class="area-name">Atencion al cliente</div>
-                    <div class="area-detail">Post-venta, soporte, WhatsApp.</div>
-                </div>
-                <div class="area-card animate">
-                    <div class="area-percent">15%</div>
-                    <div class="area-name">Recursos humanos</div>
-                    <div class="area-detail">Onboarding, capacitacion.</div>
-                </div>
+            <div class="areas">
+                <div class="area anim"><div class="area-pct num-anim">69%</div><div class="area-name">Operaciones y produccion</div><div class="area-sub">Logistica, calidad, control.</div></div>
+                <div class="area anim anim-delay-1"><div class="area-pct num-anim">69%</div><div class="area-name">Datos y decisiones</div><div class="area-sub">KPIs, BI, dejar de ser el dashboard humano.</div></div>
+                <div class="area anim anim-delay-2"><div class="area-pct num-anim">62%</div><div class="area-name">Ventas y marketing</div><div class="area-sub">Gestion comercial, leads, seguimiento.</div></div>
+                <div class="area anim"><div class="area-pct num-anim">46%</div><div class="area-name">Admin y finanzas</div><div class="area-sub">Conciliaciones, facturacion, cobranzas.</div></div>
+                <div class="area anim anim-delay-1"><div class="area-pct num-anim">31%</div><div class="area-name">Atencion al cliente</div><div class="area-sub">Post-venta, soporte, WhatsApp.</div></div>
+                <div class="area anim anim-delay-2"><div class="area-pct num-anim">15%</div><div class="area-name">Recursos humanos</div><div class="area-sub">Onboarding, capacitacion.</div></div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 5: IN THEIR WORDS -->
+    <!-- SECTION 5: THEIR WORDS + WHAT WE'RE SEEING -->
     <section>
-        <div class="container">
-            <div class="section-tag animate">En sus palabras</div>
-            <h2 class="animate">Les pregunte: si pudieras resolver<br><strong>una cosa con AI en 6 meses...</strong></h2>
+        <div class="wrap">
+            <div class="stag anim">En sus palabras</div>
+            <h2 class="anim">Si pudieras resolver<br><strong>una cosa con AI en 6 meses...</strong></h2>
 
-            <div class="narrative animate">
-                <p>Estas son respuestas textuales. El 85% pudo articular un dolor concreto. No son deseos genericos — son problemas que les cuestan plata todos los dias.</p>
-                <p><strong>"KPIs en tiempo real."</strong> Varios quieren dejar de vivir en Excel. Datos de software conectados a Power BI, dashboards que se actualicen solos.</p>
-                <p><strong>"Automatizar el proceso operativo."</strong> Registracion bancaria, comprobantes, ERP conectado al embudo de ventas. Los procesos que consumen horas y no agregan valor.</p>
-                <p><strong>"Camaras que frenen la maquina al ver un error."</strong> Computer vision aplicada a manufactura. Ambicioso, pero tecnicamente viable hoy.</p>
-                <p><strong>"Post-venta y cobranzas automatizadas."</strong> Alta demanda de WhatsApp, seguimiento manual, procesos que se caen cuando escala el volumen.</p>
+            <div class="prose anim">
+                <p>Les hice esta pregunta abierta. El 85% pudo articular un dolor concreto. No son deseos genericos — son problemas que cuestan plata todos los dias:</p>
+                <p><strong>"KPIs en tiempo real."</strong> Dejar de vivir en Excel. Dashboards que se actualicen solos.</p>
+                <p><strong>"Automatizar procesos operativos."</strong> Registracion bancaria, comprobantes, ERP conectado al embudo de ventas.</p>
+                <p><strong>"Camaras que frenen la maquina al ver un error."</strong> Computer vision en manufactura. Ambicioso pero viable.</p>
+                <p><strong>"Post-venta y cobranzas automatizadas."</strong> Volumen de WhatsApp, seguimiento manual que se cae cuando escala.</p>
             </div>
 
-            <div class="stat-callout on-light animate">
-                <div class="stat-callout-number">92%</div>
+            <div class="evidence on-light anim">
+                <div class="evidence-num num-anim">92%</div>
                 <div>
                     <h3>invertiria algo en resolver esto.</h3>
                     <p>Solo 1 de 13 dijo $0. El resto esta dispuesto a poner plata. El tema no es si quieren. Es que no saben por donde empezar, y no tienen con quien hacerlo.</p>
-                    <div class="source">Encuesta Vistage G115, Abril 2026</div>
+                    <div class="src">Encuesta Vistage G115, Abril 2026 — datos propios</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 6: HOW THEY WANT TO MOVE -->
+    <!-- SECTION 6: EVIDENCE FROM THE FIELD -->
     <section class="bg-green">
-        <div class="container">
-            <div class="section-tag animate">Como quieren avanzar</div>
-            <h2 class="animate">No quieren hacerlo solos.<br><strong>Pero tampoco delegar a ciegas.</strong></h2>
+        <div class="wrap">
+            <div class="stag anim">Lo que estamos viendo en la cancha</div>
+            <h2 class="anim">Algunos ya arrancaron.<br><strong>Esto es lo que pasa.</strong></h2>
 
-            <div class="narrative animate">
-                <p>Les pregunte como preferirian avanzar con AI. El 38% dijo <strong>"capacitar a alguien del equipo."</strong> El 31% dijo <strong>"traer a alguien externo que implemente."</strong> Solo el 15% quiere seguir solo.</p>
-                <p>Eso me dice algo importante: quieren ayuda, pero quieren entender. No quieren que alguien venga, haga algo magico, y se vaya. Quieren que les muestren, que implementen, y que <span class="highlight">les dejen capacidad instalada.</span></p>
-                <p>Eso es exactamente el enfoque correcto. El que te implementa y te ensenha vale mas que el que te implementa y te deja dependiente.</p>
+            <div class="prose anim">
+                <p>No hace falta irse a Silicon Valley para ver AI funcionando. Hay empresas argentinas — del tamano de las nuestras — que ya estan implementando. Comparto dos ejemplos que conozco de primera mano.</p>
+            </div>
+
+            <div class="case-block on-light anim">
+                <div class="case-tag">Caso real &middot; Constructora &middot; 30 personas</div>
+                <h4>Una constructora que escala de 15.000 a 60.000 m2 sin sumar gente</h4>
+                <p>Empresa de real estate con 30 empleados y 3 socios. Recibe 130 leads por semana pero solo convierte 3-4 reuniones. KPIs en Excel, CRM al 3% de su capacidad, cada area trabaja en su silo. Arrancaron hace un mes con un proceso de AI Ops: mapeo de procesos, automatizacion de lo repetitivo, y conexion de herramientas que ya tenian pero no usaban. El equipo comercial y de marketing ya esta usando AI para coordinar — sin haber sumado una sola persona.</p>
+            </div>
+
+            <div class="case-block on-light anim">
+                <div class="case-tag">Dato de la encuesta &middot; Cementos Avellaneda</div>
+                <h4>AI en planta: prediccion de roturas en llenado de bolsas</h4>
+                <p>De nuestro propio grupo: una empresa de cementos implemento AI que aprende a predecir cuando el llenado de bolsas va a fallar — y frena la maquina antes de que pase. Tambien automatizaron conciliaciones bancarias y cobranzas. Es la empresa mas avanzada del grupo en implementacion real. Y sin embargo, su CEO dice "no tengo idea que mas hacer." Tiene la herramienta pero no la vision de expansion.</p>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 7: NEXT STEP (casual, exclusive, not pushy) -->
-    <section class="bg-dark cta-section">
-        <div class="container">
-            <div class="cta-inner animate">
-                <div class="section-tag">¿Y ahora?</div>
-                <h2>Si esto te hizo <strong>ruido,</strong><br>hablemos.</h2>
-                <div class="section-prose" style="margin-top: 24px; color: rgba(255,255,255,0.55);">
-                    <p style="margin-bottom: 16px;">No tengo una solucion magica. Pero si tenemos un equipo que lleva 15 anos construyendo software y que hace un ano se metio de lleno en AI aplicada a operaciones.</p>
-                    <p style="margin-bottom: 16px;">Lo que puedo ofrecerle a los miembros del grupo es sentarnos 2 horas — yo y un dev senior de mi equipo — a mapear tus procesos y mostrarte donde AI puede impactar en tu empresa. Sin costo, sin compromiso, sin PowerPoint de 80 paginas.</p>
-                    <p style="margin-bottom: 16px;">Si lo que encontramos tiene sentido, hablamos de como implementarlo. Si no, te quedas con el mapa y hacemos de cuenta que fue un cafe largo.</p>
-                    <p style="color: rgba(255,255,255,0.35);">¿Te interesa? Chiflame por privado o despues de la reunion y coordinamos.</p>
-                </div>
+    <!-- SECTION 7: HOW THEY WANT TO MOVE -->
+    <section class="bg-dark">
+        <div class="wrap">
+            <div class="stag anim">Como quieren avanzar</div>
+            <h2 class="anim">No quieren hacerlo solos.<br><strong>Pero tampoco delegar a ciegas.</strong></h2>
+
+            <div class="prose anim">
+                <p>El 38% prefiere <strong>capacitar a alguien del equipo.</strong> El 31% traeria <strong>a alguien externo que implemente.</strong> Solo el 15% quiere seguir solo.</p>
+                <p>El mensaje es claro: quieren ayuda, pero quieren entender. No quieren que alguien venga, haga algo magico, y se vaya. Quieren que les muestren, que implementen, y que <span class="hl">les dejen capacidad instalada.</span></p>
+                <p>Eso es exactamente el enfoque correcto. El que implementa y ensenha vale mas que el que implementa y te deja dependiente.</p>
+            </div>
+
+            <div class="footnote anim">
+                <p>Desde Braintly llevamos 15 anos construyendo software. Hace un ano nos metimos de lleno en AI aplicada a operaciones. Estamos haciendo exactamente esto con un par de empresas — sentarnos, mapear procesos, y encontrar donde AI puede impactar de verdad. <strong>Si a alguien del grupo le hace ruido lo que vio aca, sabe donde encontrarme.</strong></p>
             </div>
         </div>
     </section>
 
     <!-- SOURCES -->
     <section class="sources">
-        <div class="container">
+        <div class="wrap">
             <div class="sources-tag">Fuentes citadas</div>
             <ul class="sources-list">
-                <li>Microsoft Argentina (Mar 2025) — Encuesta adopcion AI en PyMEs, 100 lideres. <a href="https://news.microsoft.com/es-xl/encuesta-de-microsoft-revela-que-el-70-de-las-mipymes-argentinas-quieren-adoptar-la-ia/" target="_blank" rel="noopener">Ver</a></li>
+                <li>Microsoft Argentina (Mar 2025) — Encuesta PyMEs, 100 lideres. <a href="https://news.microsoft.com/es-xl/encuesta-de-microsoft-revela-que-el-70-de-las-mipymes-argentinas-quieren-adoptar-la-ia/" target="_blank" rel="noopener">Ver</a></li>
                 <li>SAP "AI en el mundo corporativo" (Mar 2025) — 200 decisores argentinos. <a href="https://news.sap.com/latinamerica/2025/03/la-mitad-de-las-companias-argentinas-ya-obtiene-resultados-de-sus-inversiones-en-inteligencia-artificial/" target="_blank" rel="noopener">Ver</a></li>
-                <li>BCG "Build for the Future" (Sep 2025) — 1.250 ejecutivos, 9 industrias. <a href="https://www.prnewswire.com/news-releases/ai-leaders-outpace-laggards-with-double-the-revenue-growth-and-40-more-cost-savings-302570218.html" target="_blank" rel="noopener">Ver</a></li>
-                <li>McKinsey "State of AI" (Mar 2025) — Encuesta global. <a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai" target="_blank" rel="noopener">Ver</a></li>
-                <li>PwC 29th Global CEO Survey (Ene 2026) — 4.454 CEOs, 95 paises. <a href="https://www.pwc.com/gx/en/news-room/press-releases/2026/pwc-2026-global-ceo-survey.html" target="_blank" rel="noopener">Ver</a></li>
+                <li>BCG "Build for the Future" (Sep 2025) — 1.250 ejecutivos. <a href="https://www.prnewswire.com/news-releases/ai-leaders-outpace-laggards-with-double-the-revenue-growth-and-40-more-cost-savings-302570218.html" target="_blank" rel="noopener">Ver</a></li>
+                <li>McKinsey "State of AI" (Mar 2025). <a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai" target="_blank" rel="noopener">Ver</a></li>
+                <li>PwC 29th CEO Survey (Ene 2026) — 4.454 CEOs. <a href="https://www.pwc.com/gx/en/news-room/press-releases/2026/pwc-2026-global-ceo-survey.html" target="_blank" rel="noopener">Ver</a></li>
                 <li>Encuesta Vistage G115 (Abr 2026) — 13 de ~18 miembros. Datos propios.</li>
             </ul>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <div class="footer">
-        <div class="container">Braintly &middot; braintly.com</div>
-    </div>
+    <div class="footer"><div class="wrap">Braintly &middot; braintly.com</div></div>
 
     <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
-        document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+        }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+        document.querySelectorAll('.anim, .num-anim').forEach(el => obs.observe(el));
     </script>
 </body>
 </html>
