@@ -534,6 +534,136 @@
             transform: translateY(-2px);
         }
 
+        /* ===== CONTEXT MARKET ===== */
+        .context-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2px;
+            margin-top: 48px;
+        }
+
+        .context-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            padding: 36px 32px;
+            position: relative;
+        }
+
+        .context-card .context-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--green);
+            line-height: 1;
+            margin-bottom: 12px;
+        }
+
+        .context-card h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+
+        .context-card p {
+            font-size: 14px;
+            color: rgba(255,255,255,0.45);
+            line-height: 1.5;
+        }
+
+        .context-card .context-source {
+            font-size: 11px;
+            color: rgba(255,255,255,0.25);
+            margin-top: 12px;
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: 0.02em;
+        }
+
+        .context-card .context-source a {
+            color: rgba(255,255,255,0.35);
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        .context-callout {
+            background: rgba(255,68,68,0.06);
+            border: 1px solid rgba(255,68,68,0.15);
+            padding: 36px 32px;
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .context-callout .context-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 56px;
+            font-weight: 700;
+            color: var(--red);
+            line-height: 1;
+        }
+
+        .context-callout h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 6px;
+        }
+
+        .context-callout p {
+            font-size: 14px;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.5;
+        }
+
+        .context-callout .context-source {
+            font-size: 11px;
+            color: rgba(255,255,255,0.25);
+            margin-top: 8px;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .context-callout .context-source a {
+            color: rgba(255,255,255,0.35);
+            text-decoration: underline;
+        }
+
+        /* ===== SOURCES ===== */
+        .sources-section {
+            background: var(--dark);
+            padding: 48px 0;
+        }
+
+        .sources-list {
+            list-style: none;
+            columns: 2;
+            column-gap: 40px;
+        }
+
+        .sources-list li {
+            font-size: 12px;
+            color: rgba(255,255,255,0.3);
+            margin-bottom: 8px;
+            break-inside: avoid;
+            line-height: 1.5;
+        }
+
+        .sources-list a {
+            color: rgba(255,255,255,0.4);
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        @media (max-width: 900px) {
+            .context-grid { grid-template-columns: 1fr; }
+            .context-callout { grid-template-columns: 1fr; text-align: center; }
+            .context-callout .context-number { font-size: 42px; }
+            .sources-list { columns: 1; }
+        }
+
         /* ===== FOOTER ===== */
         .footer {
             background: var(--dark);
@@ -630,6 +760,50 @@
             <div class="hero-meta-item">
                 <span>10</span>
                 preguntas analizadas
+            </div>
+        </div>
+    </section>
+
+    <!-- MARKET CONTEXT -->
+    <section class="section-dark">
+        <div class="container">
+            <div class="section-tag animate">El contexto</div>
+            <h2 class="animate">Mientras nosotros dudamos,<br><strong>el mundo se mueve.</strong></h2>
+            <p class="section-intro animate">Estos no son datos de Braintly ni de la encuesta. Son datos de McKinsey, BCG, PwC, Microsoft y CEPAL. Verificables.</p>
+
+            <div class="context-grid">
+                <div class="context-card animate">
+                    <div class="context-number">8/10</div>
+                    <h4>PyMEs argentinas van a invertir en AI por primera vez este ano</h4>
+                    <p>El 70% quiere adoptar AI y el 84% considera que su impacto en productividad es positivo.</p>
+                    <div class="context-source">Microsoft Argentina, Marzo 2025 &middot; <a href="https://news.microsoft.com/es-xl/encuesta-de-microsoft-revela-que-el-70-de-las-mipymes-argentinas-quieren-adoptar-la-ia/" target="_blank" rel="noopener">Ver fuente</a></div>
+                </div>
+                <div class="context-card animate">
+                    <div class="context-number">50%</div>
+                    <h4>de empresas medianas argentinas ya reporta resultados positivos con AI</h4>
+                    <p>Y el 53% planea aumentar su inversion en AI respecto a 2024. No es futuro: esta pasando ahora.</p>
+                    <div class="context-source">SAP "AI en el mundo corporativo", Marzo 2025 &middot; <a href="https://news.sap.com/latinamerica/2025/03/la-mitad-de-las-companias-argentinas-ya-obtiene-resultados-de-sus-inversiones-en-inteligencia-artificial/" target="_blank" rel="noopener">Ver fuente</a></div>
+                </div>
+                <div class="context-card animate">
+                    <div class="context-number">5%</div>
+                    <h4>de las empresas globales son "lideres" en AI. Tienen 1.7x mas revenue.</h4>
+                    <p>El 60% son "rezagados" con ganancias minimas. La brecha se agranda cada trimestre.</p>
+                    <div class="context-source">BCG "Build for the Future", Sep 2025 &middot; 1,250 ejecutivos &middot; <a href="https://www.prnewswire.com/news-releases/ai-leaders-outpace-laggards-with-double-the-revenue-growth-and-40-more-cost-savings-302570218.html" target="_blank" rel="noopener">Ver fuente</a></div>
+                </div>
+                <div class="context-card animate">
+                    <div class="context-number">80%</div>
+                    <h4>de las empresas pone AI encima de procesos viejos. No funciona.</h4>
+                    <p>Las que redisenan sus workflows obtienen 2.8x mas impacto. La diferencia no es la herramienta: es como la implementas.</p>
+                    <div class="context-source">McKinsey "State of AI", Marzo 2025 &middot; <a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai" target="_blank" rel="noopener">Ver fuente</a></div>
+                </div>
+                <div class="context-callout animate">
+                    <div class="context-number">56%</div>
+                    <div>
+                        <h4>de los CEOs globales no sacaron NADA de su inversion en AI.</h4>
+                        <p>Pero el 12% que lo hizo bien reporta crecimiento en revenue Y reduccion de costos. La diferencia no es cuanto invertis, sino como lo implementas.</p>
+                        <div class="context-source">PwC 29th Global CEO Survey, Enero 2026 &middot; 4,454 CEOs, 95 paises &middot; <a href="https://www.pwc.com/gx/en/news-room/press-releases/2026/pwc-2026-global-ceo-survey.html" target="_blank" rel="noopener">Ver fuente</a></div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -928,6 +1102,26 @@
             <a href="https://calendly.com" class="cta-button animate">Agendar AI Audit</a>
 
             <p class="cta-bottom-text animate">Son 2 horas con un dev senior y conmigo. No hay venta, no hay compromiso. Si lo que encontramos te sirve, hablamos de cómo implementarlo. Si no, te quedás con el reporte.</p>
+        </div>
+    </section>
+
+    <!-- SOURCES -->
+    <section class="sources-section">
+        <div class="container">
+            <div class="section-tag" style="color: rgba(255,255,255,0.3); margin-bottom: 24px;">Fuentes</div>
+            <ul class="sources-list">
+                <li>Microsoft Argentina (Mar 2025) — Encuesta adopcion AI en MiPyMEs argentinas, 100 lideres. <a href="https://news.microsoft.com/es-xl/encuesta-de-microsoft-revela-que-el-70-de-las-mipymes-argentinas-quieren-adoptar-la-ia/" target="_blank" rel="noopener">Ver</a></li>
+                <li>SAP "AI en el mundo corporativo" (Mar 2025) — 200 decisores argentinos, 1.200 en LATAM. <a href="https://news.sap.com/latinamerica/2025/03/la-mitad-de-las-companias-argentinas-ya-obtiene-resultados-de-sus-inversiones-en-inteligencia-artificial/" target="_blank" rel="noopener">Ver</a></li>
+                <li>BCG "Build for the Future" (Sep 2025) — 1.250 ejecutivos, 9 industrias, 25+ sectores. <a href="https://www.prnewswire.com/news-releases/ai-leaders-outpace-laggards-with-double-the-revenue-growth-and-40-more-cost-savings-302570218.html" target="_blank" rel="noopener">Ver</a></li>
+                <li>McKinsey "State of AI" (Mar 2025) — Encuesta global de organizaciones. <a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai" target="_blank" rel="noopener">Ver</a></li>
+                <li>PwC 29th Global CEO Survey (Ene 2026) — 4.454 CEOs, 95 paises. <a href="https://www.pwc.com/gx/en/news-room/press-releases/2026/pwc-2026-global-ceo-survey.html" target="_blank" rel="noopener">Ver</a></li>
+                <li>Deloitte "State of AI in the Enterprise" (2026) — 3.235 lideres, 24 paises. <a href="https://www.deloitte.com/us/en/what-we-do/capabilities/applied-artificial-intelligence/content/state-of-ai-in-the-enterprise.html" target="_blank" rel="noopener">Ver</a></li>
+                <li>CEPAL/ILIA 2025 — Indice Latinoamericano de Inteligencia Artificial, 19 paises. <a href="https://www.cepal.org/es/publicaciones/82514-indice-latinoamericano-inteligencia-artificial-ilia-2025" target="_blank" rel="noopener">Ver</a></li>
+                <li>Google/Ipsos "Our Life with AI" (Oct 2025) — 21.000 adultos, 21 paises. <a href="https://www.ipsos.com/en-us/google-ipsos-multi-country-ai-survey-2025" target="_blank" rel="noopener">Ver</a></li>
+                <li>OECD "AI Adoption by SMEs" (Dic 2025) — Paises OECD. <a href="https://www.oecd.org/en/publications/ai-adoption-by-small-and-medium-sized-enterprises_426399c1-en.html" target="_blank" rel="noopener">Ver</a></li>
+                <li>WEF "Future of Jobs Report" (Ene 2025) — Reporte global de empleo y AI. <a href="https://reports.weforum.org/docs/WEF_Future_of_Jobs_Report_2025.pdf" target="_blank" rel="noopener">Ver</a></li>
+                <li>Encuesta Vistage G115 (Abr 2026) — 13 respuestas de ~18 miembros. Datos propios.</li>
+            </ul>
         </div>
     </section>
 
