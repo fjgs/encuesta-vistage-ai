@@ -175,6 +175,9 @@
         .an.v .mnum{animation:countUp .5s cubic-bezier(.22,1,.36,1) both .2s}
         .reading.an.v{animation:slideIn .6s ease both}
         .j-step::before{animation:pulse 2s infinite}
+        @keyframes bondiLlega{0%{opacity:0;transform:translateX(120px)}60%{opacity:1;transform:translateX(-8px)}75%{transform:translateX(4px)}90%{transform:translateX(-2px)}100%{transform:translateX(0)}}
+        @keyframes bondiIdle{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+        .bondi{opacity:0}.bondi.v{opacity:1;animation:bondiLlega 1.2s cubic-bezier(.22,1,.36,1) forwards}.bondi.v img{animation:bondiIdle 3s ease-in-out 1.4s infinite}
 
         @media(max-width:1400px){.hero h1{font-size:66px}.hil{max-width:260px}.hsv{font-size:44px}}
         @media(max-width:1200px){.hero h1{font-size:56px}.reading{font-size:30px}.mnum{font-size:64px}.hil{max-width:220px}}
@@ -214,9 +217,9 @@
         </div></div>
         <div class="hb">
             <div class="hss">
-                <div><div class="hsv">13</div><div class="hsl">respuestas</div></div>
-                <div><div class="hsv">72%</div><div class="hsl">del grupo</div></div>
-                <div><div class="hsv">10</div><div class="hsl">preguntas</div></div>
+                <div><div class="hsv">13</div><div class="hsl">Respuestas</div></div>
+                <div><div class="hsv">~80%</div><div class="hsl">Participación</div></div>
+                <div><div class="hsv">10</div><div class="hsl">Preguntas</div></div>
             </div>
             <div class="hsc">Scroll <span class="hsa">&#8595;</span></div>
         </div>
@@ -298,13 +301,13 @@
 <section class="dk">
 <div class="w">
     <div class="tag an">Urgencia y frenos</div>
-    <div class="reading an">El 85% siente urgencia. El 69% sigue haciéndolo solo. <em>Esa brecha entre sentir y hacer es dónde estamos atrapados.</em></div>
+    <div class="reading an">El 85% siente urgencia. El 69% sigue haciéndolo solo. <em>Esa brecha entre sentir y hacer es donde estamos atrapados.</em></div>
 
     <div class="mrow an">
         <div class="mblock">
             <div class="mnum yl">85%</div>
             <div class="mlabel">siente que debería hacer más.</div>
-            <div class="mtext">54% FOMO. 31% culpa. Solo 15% tranquilo. La urgencia es real — pero sin acción, es solo ansiedad.</div>
+            <div class="mtext">54% FOMO. 31% culpa. Sólo 15% tranquilo. La urgencia es real — pero sin acción, es sólo ansiedad.</div>
         </div>
         <div class="mblock">
             <div class="mnum rd">53%</div>
@@ -327,13 +330,13 @@
 <section class="lt">
 <div class="w">
     <div class="tag an">Dónde ven impacto</div>
-    <div class="reading an">La oportunidad #1 no es chatbots ni contenido. <em>Es tener los números de tu empresa sin pedirlos.</em></div>
+    <div class="reading an">La oportunidad #1 no son chatbots ni contenido. <em>Es tener los números de tu empresa sin pedirlos.</em></div>
 
     <div class="mrow single an">
         <div class="mblock">
             <div class="mnum gn-c" style="font-size:64px">#1</div>
             <div class="mlabel">Datos y decisiones — 77% lo prioriza.</div>
-            <div class="mtext">KPIs en tiempo real, BI, dashboards automáticos. Que el lunes a las 8 AM ya sepas como cerró la semana sin que nadie arme un Excel.</div>
+            <div class="mtext">KPIs en tiempo real, BI, dashboards automáticos. Que el lunes a las 8 AM ya sepas cómo cerró la semana sin que nadie arme un Excel.</div>
         </div>
     </div>
 
@@ -347,7 +350,7 @@
         <div class="wtp-n">92%</div>
         <div>
             <h4>invertiría algo en resolver esto.</h4>
-            <p>Solo 1 de 13 dijo $0. El 54% pondría $2.000 o más por mes. La disposición existe. <strong>Falta cerrar el como y el con quien.</strong></p>
+            <p>Solo 1 de 13 dijo $0. El 54% pondría $2.000 o más por mes. La disposición existe. <strong>Falta cerrar el cómo y el con quién.</strong></p>
         </div>
     </div>
 </div>
@@ -373,7 +376,7 @@
 <section class="gn">
 <div class="w">
     <div class="tag an">Del grupo</div>
-    <div class="reading an">Tres empresas nuestras <em>ya tienen AI en producción.</em> Podrían compartir cómo lo hicieron.</div>
+    <div class="reading an">Tres empresas del grupo <em>ya tienen AI en producción.</em> Podrían compartir cómo lo hicieron.</div>
 
     <p class="prose an">No viene de un reporte global. Viene de acá adentro. Si estas tres empresas nos contaran qué hicieron, cómo lo implementaron, y qué les salió bien y mal — todos ganamos.</p>
 
@@ -391,7 +394,7 @@
 <section class="lt">
 <div class="w">
     <div class="tag an">El gap</div>
-    <div class="reading an">Dónde estamos hoy — y <em>dónde podríamos estar en meses</em> si cerramos la brecha.</div>
+    <div class="reading an">Dónde estamos hoy — <em> y dónde podríamos estar en meses</em> si cerramos la brecha.</div>
 
     <div class="journey an">
         <div class="j-ends">
@@ -402,7 +405,7 @@
                     <li>53% no tiene con quien ejecutar</li>
                     <li>85% siente urgencia sin actuar</li>
                     <li>3 casos en producción, ninguno escala</li>
-                    <li>El CEO es el dashboard humano</li>
+                    <li>El dashboard es humano</li>
                 </ul>
             </div>
             <div class="j-side j-to">
@@ -437,7 +440,7 @@
 
     <div class="case an">
         <div class="case-tag">Caso Braintly</div>
-        <h4>Nosotros estamos haciendo exactamente esto.</h4>
+        <h4>Braintly: Nos estamos reinventando.</h4>
         <p>15 años construyendo software. Hace un año, all-in en AI. Hoy nuestros equipos son <strong>2x a 4x más productivos.</strong> Un developer con AI produce lo que antes necesitaba 3-4 personas.</p>
         <p style="margin-top:12px">Nuestro objetivo este año: <strong>crecer revenue sin sumar una persona.</strong> Mantener costos y hacer más con lo mismo. Y no es solo desarrollo: estoy automatizando nuestro propio departamento de administración — el que prepara el MBR, los dashboards, los números de gestión. En 6 meses quiero que ese proceso corra solo.</p>
         <p style="margin-top:12px">También lo implementamos con clientes: una constructora de 30 personas que escala de 15.000 a 60.000 m2 sin sumar gente. 130 leads por semana que convertían 3-4 reuniones. Procesos manuales que consumían horas. Arrancamos hace un mes.</p>
@@ -452,18 +455,18 @@
     <div class="reading an">Lo que dicen los que <em>ya se movieron.</em> Founders argentinos y referentes globales.</div>
 
     <div class="qg">
-        <div class="qc hl an"><div class="qc-t ar">Argentina</div><blockquote>"La velocidad de evolucion de la IA penaliza más la inaccion que el error controlado."</blockquote><cite>Martin Migoya, CEO Globant &middot; <a href="https://www.laecuaciondigital.com/empresas/eventos/globant-converge-2025-senala-el-paso-de-la-experimentacion-a-la-madurez-operativa-de-la-inteligencia-artificial/" target="_blank">Fuente</a></cite></div>
+        <div class="qc hl an"><div class="qc-t ar">Argentina</div><blockquote>"La velocidad de evolucion de la IA penaliza más la inacción que el error controlado."</blockquote><cite>Martin Migoya, CEO Globant &middot; <a href="https://www.laecuaciondigital.com/empresas/eventos/globant-converge-2025-senala-el-paso-de-la-experimentacion-a-la-madurez-operativa-de-la-inteligencia-artificial/" target="_blank">Fuente</a></cite></div>
         <div class="qc hl an d1"><div class="qc-t ar">Argentina</div><blockquote>"En cinco años vamos a tener 10.000 desarrolladores. No porque los echemos, sino porque no vamos a contratar."</blockquote><cite>Marcos Galperin, MercadoLibre &middot; <a href="https://www.bloomberglinea.com/latinoamerica/argentina/por-que-la-app-de-mercadolibre-podria-pasar-a-ser-irrelevante-segun-marcos-galperin/" target="_blank">Fuente</a></cite></div>
         <div class="qc an"><div class="qc-t ar">Argentina</div><blockquote>"Las organizaciones han sido mucho más lentas en adoptar AI de lo que han sido los individuos."</blockquote><cite>Guibert Englebienne, Globant &middot; <a href="https://www.forbesuruguay.com/innovacion/guibert-englebienne-quiero-cada-persona-cada-escritorio-tenga-acceso-le-saque-jugo-ia-n66799" target="_blank">Fuente</a></cite></div>
         <div class="qc an d1"><div class="qc-t ar">Argentina</div><blockquote>"Escalamos servicio al cliente sin contratar más personas."</blockquote><cite>Ariel Szarfsztejn, CEO MercadoLibre &middot; <a href="https://www.lanacion.com.ar/tecnologia/el-futuro-ya-llego-como-las-empresas-argentinas-estan-incorporando-la-ia-en-el-corazon-de-sus-nid04042026/" target="_blank">Fuente</a></cite></div>
-        <div class="qc an"><div class="qc-t gl">Global</div><blockquote>"Antes de pedir más gente, demostren por qué AI no puede hacer el trabajo."</blockquote><cite>Tobi Lutke, CEO Shopify &middot; <a href="https://techcrunch.com/2025/04/07/shopify-ceo-tells-teams-to-consider-using-ai-before-growing-headcount/" target="_blank">Fuente</a></cite></div>
+        <div class="qc an"><div class="qc-t gl">Global</div><blockquote>"Antes de pedir más gente, demuestren por qué AI no puede hacer el trabajo."</blockquote><cite>Tobi Lutke, CEO Shopify &middot; <a href="https://techcrunch.com/2025/04/07/shopify-ceo-tells-teams-to-consider-using-ai-before-growing-headcount/" target="_blank">Fuente</a></cite></div>
         <div class="qc an d1"><div class="qc-t gl">Global &middot; 2026</div><blockquote>"La mayoría de las empresas van a llegar a la misma conclusión y hacer cambios estructurales similares dentro del próximo año."</blockquote><cite>Jack Dorsey, CEO Block — tras cortar 40% de su empresa &middot; Feb 2026 &middot; <a href="https://www.cnbc.com/2026/02/26/block-laying-off-about-4000-employees-nearly-half-of-its-workforce.html" target="_blank">Fuente</a></cite></div>
         <div class="qc an"><div class="qc-t gl">Global &middot; 2026</div><blockquote>"Para fin de 2026, la mayoría va a experimentar AI no como un destino, sino como algo que silenciosamente está adentro de todo lo que ya hacen."</blockquote><cite>Sam Altman, CEO OpenAI &middot; Axios, Abr 2026 &middot; <a href="https://www.axios.com/2026/04/06/behind-the-curtain-sams-superintelligence-new-deal" target="_blank">Fuente</a></cite></div>
         <div class="qc an d1"><div class="qc-t gl">Global</div><blockquote>"10 ingenieros con AI hacen el trabajo de 50 a 100."</blockquote><cite>Garry Tan, CEO Y Combinator &middot; Mar 2025 &middot; <a href="https://www.cnbc.com/2025/03/15/y-combinator-startups-are-fastest-growing-in-fund-history-because-of-ai.html" target="_blank">Fuente</a></cite></div>
         <div class="qc an"><div class="qc-t gl">Global</div><blockquote>"Antes de pedir más gente, demuestren por qué AI no puede hacer el trabajo."</blockquote><cite>Tobi Lutke, CEO Shopify &middot; Abr 2025 &middot; <a href="https://techcrunch.com/2025/04/07/shopify-ceo-tells-teams-to-consider-using-ai-before-growing-headcount/" target="_blank">Fuente</a></cite></div>
     </div>
 
-    <div class="reading an" style="font-size:24px">Esto no es burbuja. Dorsey cortó 4.000 personas <em>sin estar en crisis.</em> Altman dice que para fin de 2026 AI va a estar adentro de todo. En Argentina la adopción va a ser más lenta — no porque la tecnología no esté, sino porque <em>requiere cambiar la cabeza.</em> Ahí es donde el expertise hace la diferencia.</div>
+    <div class="reading an" style="font-size:24px">Esto no es burbuja. Jack Dorsey cortó 4.000 personas <em>sin estar en crisis.</em> Altman dice que para fin de 2026 AI va a estar adentro de todo. En Argentina la adopción va a ser más lenta — no porque la tecnología no esté, sino porque <em>requiere cambiar la cabeza.</em> Ahí es donde el expertise hace la diferencia.</div>
 </div>
 </section>
 
@@ -486,7 +489,7 @@
         </div>
     </div>
 
-    <div class="reading an" style="font-size:26px;margin-top:16px">Jim Collins decía: <em>"La tecnología es un acelerador del momentum, no un creador."</em> Primero saber para donde vas. Despues, la tecnología te lleva más rápido. Ese es el orden.</div>
+    <div class="reading an" style="font-size:26px;margin-top:16px">Jim Collins dice: <em>"La tecnología es un acelerador del momentum, no un creador."</em> Primero saber para donde vas. Despues, la tecnología te lleva más rápido. Ese es el orden.</div>
 
     <div class="case an" style="margin-top:40px;background:rgba(71,255,203,.04);border-color:var(--g)">
         <div class="case-tag">Propuesta para el grupo</div>
@@ -508,7 +511,7 @@
         <!-- LEFT: título + fuentes -->
         <div>
             <div class="tag an">[Cierre]</div>
-            <div class="an gracias-title" style="font-family:var(--h);font-size:64px;font-weight:700;line-height:1;letter-spacing:-.03em;margin-bottom:40px;color:var(--d)">Gracias<span style="color:var(--gd)">.</span></div>
+            <div class="an gracias-title" style="font-family:var(--h);font-size:64px;font-weight:700;line-height:1;letter-spacing:-.03em;margin-bottom:40px;color:var(--d)">Graciavó<span style="color:var(--gd)">.</span></div>
 
             <div class="an d1" style="padding-top:32px;border-top:1px solid rgba(0,0,0,.08)">
                 <div style="font-family:var(--h);font-size:11px;color:rgba(0,0,0,.25);letter-spacing:.06em;text-transform:uppercase;margin-bottom:16px">Fuentes</div>
@@ -536,7 +539,7 @@
             </div>
         </div>
         <!-- RIGHT: el bondi -->
-        <div class="an d1" style="display:flex;align-items:center;justify-content:center;position:relative">
+        <div class="bondi" style="display:flex;align-items:center;justify-content:center;position:relative">
             <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:420px;height:420px;background:radial-gradient(ellipse,rgba(71,255,203,.08) 0%,transparent 70%);pointer-events:none"></div>
             <img src="./colectivo-juan.png" alt="Linea 115" style="width:100%;max-width:460px;height:auto;border-radius:16px;position:relative;z-index:1;filter:drop-shadow(0 20px 60px rgba(0,0,0,.1))">
         </div>
@@ -548,7 +551,7 @@
 
 <script>
 const o=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');o.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.an').forEach(e=>o.observe(e));
+document.querySelectorAll('.an,.bondi').forEach(e=>o.observe(e));
 </script>
 </body>
 </html>
