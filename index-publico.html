@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>¿Dónde estamos con AI? Encuesta a 20 CEOs argentinos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        @font-face{font-family:'TG';src:url('./TomatoGrotesk-Regular.otf') format('opentype');font-weight:400}
+        @font-face{font-family:'TG';src:url('./TomatoGrotesk-Medium.otf') format('opentype');font-weight:500}
+        @font-face{font-family:'TG';src:url('./TomatoGrotesk-SemiBold.otf') format('opentype');font-weight:600}
+        @font-face{font-family:'TG';src:url('./TomatoGrotesk-Bold.otf') format('opentype');font-weight:700}
+        @font-face{font-family:'TG';src:url('./TomatoGrotesk-ExtraBold.otf') format('opentype');font-weight:800}
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        :root{--g:#47ffcb;--gd:#17e1c0;--d:#080808;--w:#fff;--f:#f5f5f5;--fg:#edf3f2;--r:#ff4444;--y:#ffb800;--h:'TG',system-ui,sans-serif;--b:'Archivo',system-ui,sans-serif;--gray:#9ba9a7;--border:rgba(165,178,176,.5)}
+        html{scroll-behavior:smooth}
+        body{font-family:var(--b);color:var(--d);background:var(--w);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+        /* NAV */
+        .nav{position:fixed;top:0;left:0;right:0;z-index:100;height:72px;display:flex;align-items:center;background:rgba(8,8,8,.9);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06)}
+        .ni{width:100%;max-width:1920px;margin:0 auto;padding:0 48px;display:flex;align-items:center;justify-content:space-between}
+        .nl{height:26px;width:auto;opacity:.9}
+        .nr{display:flex;align-items:center;gap:16px}
+        .nv{font-family:var(--h);font-size:17px;font-weight:700;color:rgba(255,255,255,.8)}.nv b{color:#0066cc}
+        .ns{width:1px;height:18px;background:rgba(255,255,255,.12)}
+        .ng{font-family:var(--h);font-size:12px;color:rgba(255,255,255,.3);letter-spacing:.05em}
+
+        /* HERO */
+        .hero{position:relative;overflow:hidden;background:#000;height:calc(100vh - 72px);margin-top:72px;min-height:620px}
+        .hgl{position:absolute;inset:0;pointer-events:none}
+        .hgl div{position:absolute;top:0;height:100%;width:1px;background:rgba(255,255,255,.06)}
+        .hgw{position:absolute;bottom:-80px;right:8%;width:550px;height:380px;background:radial-gradient(ellipse,rgba(71,255,203,.1) 0%,transparent 70%);pointer-events:none}
+        .hly{position:absolute;inset:0;z-index:10;max-width:1920px;margin:0 auto;padding:0 48px;display:flex;flex-direction:column}
+        .hm{flex:1;display:flex;align-items:center}
+        .ht{max-width:700px}
+        .htg{font-family:var(--h);font-size:14px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--gd);margin-bottom:24px;opacity:0;animation:fu .8s ease both .2s}
+        .hero h1{font-family:var(--h);font-size:82px;font-weight:400;line-height:.98;letter-spacing:-.03em;color:var(--w);opacity:0;animation:fu .8s ease both .35s}
+        .hero h1 strong{font-weight:700;color:var(--g)}
+        .hp{font-size:21px;color:rgba(255,255,255,.5);margin-top:28px;max-width:540px;line-height:1.55;opacity:0;animation:fu .8s ease both .5s}
+        .hil{position:absolute;right:48px;top:50%;transform:translateY(-50%);width:28vw;max-width:320px;opacity:0;animation:fu .8s ease both .6s}
+        .hil img{width:100%;height:auto;opacity:.25}
+        .hb{position:absolute;bottom:40px;left:48px;right:48px;display:flex;align-items:end;justify-content:space-between;opacity:0;animation:fu .8s ease both .7s}
+        .hss{display:flex;gap:48px}
+        .hsv{font-family:var(--h);font-size:56px;font-weight:400;line-height:1.05;letter-spacing:-.03em;color:var(--gd)}
+        .hsl{font-size:16px;font-weight:500;color:var(--w);margin-top:2px}
+        .hsc{font-family:var(--h);font-size:13px;color:rgba(255,255,255,.35);display:flex;align-items:center;gap:8px}
+        .hsa{display:inline-block;animation:bo 2s infinite}
+
+        /* CORE LAYOUT */
+        section{padding:120px 0}
+        .w{max-width:1100px;margin:0 auto;padding:0 48px}
+        .dk{background:var(--d);color:var(--w)}
+        .lt{background:var(--f)}
+        .gn{background:var(--fg)}
+
+        /* SECTION TAG */
+        .tag{font-family:var(--h);font-size:13px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--gd);margin-bottom:24px}
+
+        /* THE READING: the star of every section */
+        .reading{font-family:var(--h);font-size:36px;font-weight:600;line-height:1.2;letter-spacing:-.02em;margin-bottom:40px;max-width:800px}
+        .reading em{font-style:normal;color:var(--gd)}
+        .dk .reading em{color:var(--g)}
+
+        /* METRIC ROW: number + context, below the reading */
+        .mrow{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-bottom:48px;align-items:start}
+        .mrow.single{grid-template-columns:1fr}
+        .mblock{}
+        .mnum{font-family:var(--h);font-size:80px;font-weight:700;line-height:1;letter-spacing:-.03em;margin-bottom:8px}
+        .mnum.gn-c{color:var(--gd)}.dk .mnum.gn-c{color:var(--g)}
+        .mnum.rd{color:var(--r)}.mnum.yl{color:var(--y)}
+        .mlabel{font-family:var(--h);font-size:18px;font-weight:600;margin-bottom:8px}
+        .mtext{font-size:17px;line-height:1.7;color:rgba(0,0,0,.5);max-width:480px}
+        .dk .mtext{color:rgba(255,255,255,.45)}
+        .msrc{font-size:12px;color:rgba(0,0,0,.25);margin-top:12px;font-family:var(--h)}
+        .dk .msrc{color:rgba(255,255,255,.2)}
+        .msrc a{color:rgba(0,0,0,.35);text-decoration:underline;text-underline-offset:2px}.dk .msrc a{color:rgba(255,255,255,.28)}
+
+        /* CASE INLINE */
+        .case{padding:32px 36px;border-left:3px solid var(--gd);background:rgba(23,225,192,.03);border-radius:0 8px 8px 0;margin-bottom:48px}
+        .dk .case{background:rgba(71,255,203,.03)}
+        .case-tag{font-family:var(--h);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--gd);margin-bottom:10px}
+        .case h4{font-family:var(--h);font-size:18px;font-weight:600;margin-bottom:8px}.dk .case h4{color:var(--w)}
+        .case p{font-size:16px;line-height:1.65;color:rgba(0,0,0,.5)}.dk .case p{color:rgba(255,255,255,.45)}
+
+        /* GRID */
+        .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:48px}
+        .gcard{padding:28px;background:var(--w);border:1px solid rgba(0,0,0,.06);border-radius:8px}
+        .dk .gcard{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.06)}
+        .gcard-n{font-family:var(--h);font-size:44px;font-weight:700;line-height:1;color:var(--gd);margin-bottom:6px}
+        .dk .gcard-n{color:var(--g)}
+        .gcard-l{font-family:var(--h);font-size:15px;font-weight:600;margin-bottom:4px}
+        .gcard-d{font-size:14px;line-height:1.55;color:rgba(0,0,0,.45)}.dk .gcard-d{color:rgba(255,255,255,.35)}
+        .gcard.ghost{background:transparent;border-style:dashed;border-color:rgba(0,0,0,.1)}
+        .gcard.ghost .gcard-n{color:rgba(0,0,0,.12)}.gcard.ghost .gcard-l{color:rgba(0,0,0,.25)}
+
+        /* RANKING */
+        .rank{margin-bottom:48px}
+        .rk{display:grid;grid-template-columns:64px 1fr;gap:20px;padding:20px 0;border-bottom:1px solid rgba(0,0,0,.06);align-items:baseline}
+        .dk .rk{border-color:rgba(255,255,255,.06)}
+        .rk:last-child{border:none}
+        .rk-n{font-family:var(--h);font-size:36px;font-weight:700;color:var(--gd)}
+        .dk .rk-n{color:var(--g)}
+        .rk h4{font-family:var(--h);font-size:17px;font-weight:600;margin-bottom:3px}
+        .rk p{font-size:15px;line-height:1.55;color:rgba(0,0,0,.45)}.dk .rk p{color:rgba(255,255,255,.4)}
+
+        /* WTP BOX */
+        .wtp{padding:36px;background:rgba(23,225,192,.05);border:1px solid rgba(23,225,192,.12);border-radius:10px;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;margin-bottom:48px}
+        .wtp-n{font-family:var(--h);font-size:64px;font-weight:700;color:var(--gd);line-height:1}
+        .wtp h4{font-family:var(--h);font-size:19px;font-weight:600;margin-bottom:6px}
+        .wtp p{font-size:16px;color:rgba(0,0,0,.5);line-height:1.55}
+
+        /* PRAISE */
+        .praise{display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:48px}
+        .pc{padding:28px 32px;background:var(--w);border:1px solid rgba(0,0,0,.06);border-radius:10px;display:grid;grid-template-columns:60px 1fr;gap:20px;align-items:start}
+        .pc-i{width:60px;height:60px;border-radius:14px;background:var(--fg);display:flex;align-items:center;justify-content:center;font-family:var(--h);font-size:20px;font-weight:700;color:var(--gd)}
+        .pc h4{font-family:var(--h);font-size:17px;font-weight:600;margin-bottom:4px}
+        .pc-w{font-size:15px;line-height:1.6;color:rgba(0,0,0,.5);margin-bottom:6px}
+        .pc-n{font-size:14px;color:var(--gd);font-weight:500;font-style:italic}
+
+        /* GAP JOURNEY */
+        .journey{margin-bottom:48px;position:relative}
+        .j-ends{display:grid;grid-template-columns:1fr 1fr;gap:0}
+        .j-side{padding:36px 32px}
+        .j-from{background:rgba(255,68,68,.04);border:1px solid rgba(255,68,68,.1);border-radius:16px 0 0 16px;border-right:none}
+        .j-to{background:rgba(71,255,203,.04);border:1px solid rgba(23,225,192,.12);border-radius:0 16px 16px 0;border-left:none}
+        .j-side h3{font-family:var(--h);font-size:18px;font-weight:600;margin-bottom:14px}
+        .j-from h3{color:var(--r)}.j-to h3{color:var(--gd)}
+        .j-side li{font-size:15px;line-height:1.65;color:rgba(0,0,0,.5);padding:4px 0 4px 18px;position:relative;list-style:none}
+        .j-side li::before{content:'';position:absolute;left:0;top:12px;width:6px;height:6px;border-radius:50%}
+        .j-from li::before{background:var(--r)}.j-to li::before{background:var(--gd)}
+        .dk .j-side li{color:rgba(255,255,255,.55)}
+        .dk .j-from{background:rgba(255,68,68,.06);border-color:rgba(255,68,68,.18)}
+        .dk .j-to{background:rgba(71,255,203,.05);border-color:rgba(23,225,192,.22)}
+        .j-bridge{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+        .j-step{padding:28px 24px;background:var(--w);border:1px solid rgba(0,0,0,.06);border-radius:10px;text-align:center;position:relative}
+        .j-step::before{content:'';position:absolute;top:-10px;left:50%;transform:translateX(-50%);width:20px;height:20px;background:var(--gd);border-radius:50%;border:3px solid var(--f)}
+        .j-step h4{font-family:var(--h);font-size:15px;font-weight:600;margin-top:8px;margin-bottom:6px}
+        .j-step p{font-size:14px;line-height:1.55;color:rgba(0,0,0,.5)}
+        .j-line{position:absolute;top:-1px;left:16.66%;right:16.66%;height:2px;background:linear-gradient(90deg,var(--r),var(--gd));margin-top:20px;z-index:0}
+
+        /* QUOTE GRID */
+        .qg{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:48px}
+        .qc{padding:28px;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);display:flex;flex-direction:column;justify-content:space-between}
+        .qc.hl{border-color:rgba(71,255,203,.15);background:rgba(71,255,203,.03)}
+        .qc blockquote{font-family:var(--h);font-size:17px;font-weight:500;line-height:1.4;color:var(--w);margin-bottom:16px}
+        .qc cite{font-size:12px;color:rgba(255,255,255,.3);font-style:normal}
+        .qc cite a{color:rgba(255,255,255,.35);text-decoration:underline;text-underline-offset:2px}
+        .qc-t{font-family:var(--h);font-size:10px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px}
+        .qc-t.ar{color:var(--gd)}.qc-t.gl{color:var(--y)}
+
+        /* PROSE */
+        .prose{font-size:18px;line-height:1.75;color:rgba(0,0,0,.55);max-width:640px;margin-bottom:40px}
+        .dk .prose{color:rgba(255,255,255,.45)}
+        .prose strong{font-weight:600;color:var(--d)}.dk .prose strong{color:var(--w)}
+
+        /* CONTACT ITEMS */
+        .contact-item:hover{background:var(--fg)!important;transform:translateY(-2px)}
+        .contact-item svg{transition:transform .2s ease}
+        .contact-item:hover svg{transform:scale(1.1)}
+
+        /* FOOTNOTE */
+        .fn{padding-top:40px;border-top:1px solid rgba(255,255,255,.06)}
+        .fn p{font-size:17px;line-height:1.65;color:rgba(255,255,255,.35);max-width:620px}
+        .fn strong{color:rgba(255,255,255,.6)}
+
+        /* SOURCES */
+        .ss{padding:36px 0;background:#050505}
+        .st{font-family:var(--h);font-size:11px;color:rgba(255,255,255,.18);letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px}
+        .sl{list-style:none;columns:2;column-gap:36px}
+        .sl li{font-size:11px;color:rgba(255,255,255,.15);margin-bottom:5px;break-inside:avoid;line-height:1.5}
+        .sl a{color:rgba(255,255,255,.25);text-decoration:underline;text-underline-offset:2px}
+        .ft{background:#000;color:rgba(255,255,255,.12);padding:20px 0;text-align:center;font-size:12px;font-family:var(--h)}
+
+        @keyframes fu{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes bo{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+        @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(71,255,203,.3)}50%{box-shadow:0 0 0 12px rgba(71,255,203,0)}}
+        @keyframes slideIn{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
+        @keyframes countUp{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:scale(1)}}
+        .an{opacity:0;transform:translateY(22px);transition:all .7s cubic-bezier(.22,1,.36,1)}.an.v{opacity:1;transform:translateY(0)}
+        .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+        .an.v .mnum{animation:countUp .5s cubic-bezier(.22,1,.36,1) both .2s}
+        .reading.an.v{animation:slideIn .6s ease both}
+        .j-step::before{animation:pulse 2s infinite}
+        @keyframes bondiLlega{0%{opacity:0;transform:translateX(120px)}60%{opacity:1;transform:translateX(-8px)}75%{transform:translateX(4px)}90%{transform:translateX(-2px)}100%{transform:translateX(0)}}
+        @keyframes bondiIdle{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+        .bondi{opacity:0}.bondi.v{opacity:1;animation:bondiLlega 1.2s cubic-bezier(.22,1,.36,1) forwards}.bondi.v img{animation:bondiIdle 3s ease-in-out 1.4s infinite}
+
+        @media(max-width:1400px){.hero h1{font-size:66px}.hil{max-width:260px}.hsv{font-size:44px}}
+        @media(max-width:1200px){.hero h1{font-size:56px}.reading{font-size:30px}.mnum{font-size:64px}.hil{max-width:220px}}
+        @media(max-width:900px){
+            .ni,.w{padding:0 24px}.hly{padding:0 24px}.hb{left:24px;right:24px}
+            section{padding:80px 0}.hero h1{font-size:44px}.hp{font-size:18px}
+            .hil{display:none}.hss{gap:28px}.hsv{font-size:36px}.hsc{display:none}
+            .reading{font-size:26px}.mnum{font-size:52px}
+            .grid3,.qg,.j-bridge,.j-ends{grid-template-columns:1fr}
+            .mrow{grid-template-columns:1fr;gap:32px}
+            .j-from{border-radius:12px 12px 0 0;border:1px solid rgba(255,68,68,.1)}.j-to{border-radius:0 0 12px 12px;border:1px solid rgba(23,225,192,.12)}
+            .wtp{grid-template-columns:1fr}.pc{grid-template-columns:1fr}
+            .sl{columns:1}.ns,.ng{display:none}
+            .j-line{display:none}
+            .gracias-title{font-size:88px!important;margin-bottom:48px!important}
+        }
+    </style>
+</head>
+<body>
+
+<nav class="nav"><div class="ni">
+    <img src="./logo-braintly-white.svg" alt="Braintly" class="nl">
+    <div class="nr"><span class="ng">Encuesta CEOs Argentina &middot; ABR 2026</span></div>
+</div></nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hgl"><div style="left:25%"></div><div style="left:50%"></div><div style="left:75%"></div></div>
+    <div class="hgw"></div>
+    <div class="hil"><img src="./stack.svg" alt=""></div>
+    <div class="hly">
+        <div class="hm"><div class="ht">
+            <div class="htg">Encuesta a CEOs argentinos &middot; 2026</div>
+            <h1>¿Dónde estamos<br>con <strong>AI</strong>?</h1>
+            <p class="hp">Los datos de 20 CEOs argentinos, lo que significan, y lo que podríamos hacer.</p>
+        </div></div>
+        <div class="hb">
+            <div class="hss">
+                <div><div class="hsv">20</div><div class="hsl">CEOs</div></div>
+                <div><div class="hsv">10</div><div class="hsl">Preguntas</div></div>
+                <div><div class="hsv">2026</div><div class="hsl">Argentina</div></div>
+            </div>
+            <div class="hsc">Scroll <span class="hsa">&#8595;</span></div>
+        </div>
+    </div>
+</section>
+
+<!-- 1. CONTEXT -->
+<section class="dk">
+<div class="w">
+    <div class="tag an">El contexto</div>
+    <div class="reading an">Las empresas que compiten con vos ya están invirtiendo en AI. Las que ganan <em>no son las que más ponen: son las que mejor implementan.</em></div>
+
+    <div class="mrow an">
+        <div class="mblock">
+            <div class="mnum gn-c">87%</div>
+            <div class="mlabel">de PyMEs argentinas quiere invertir en GenAI, 15 puntos más que en 2024.</div>
+            <div class="mtext">El 50% de las medianas ya reporta resultados positivos. 53% planea aumentar la inversión vs 2024.</div>
+            <div class="msrc">Microsoft + Edelman, 2025 &middot; <a href="https://www.ambito.com/negocios/la-adopcion-la-inteligencia-artificial-ya-es-uno-los-cinco-principales-desafios-las-pymes-argentinas-n6129489" target="_blank">Fuente</a> | SAP, Mar 2025 &middot; <a href="https://news.sap.com/latinamerica/2025/03/la-mitad-de-las-companias-argentinas-ya-obtiene-resultados-de-sus-inversiones-en-inteligencia-artificial/" target="_blank">Fuente</a></div>
+        </div>
+        <div class="mblock">
+            <div class="mnum rd">56%</div>
+            <div class="mlabel">de CEOs globales no sacó nada de su inversión en AI.</div>
+            <div class="mtext">Las empresas que capturan valor real de AI son 2.8x más propensas a rediseñar workflows, no meter AI encima de lo que ya hay.</div>
+            <div class="msrc">PwC CEO Survey, Ene 2026 &middot; <a href="https://www.pwc.com/gx/en/news-room/press-releases/2026/pwc-2026-global-ceo-survey.html" target="_blank">Fuente</a> | McKinsey &middot; <a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai" target="_blank">Fuente</a></div>
+        </div>
+    </div>
+
+    <div class="case an">
+        <div class="case-tag">Caso real &middot; Klarna (fintech sueca)</div>
+        <h4>Un AI reemplazó el trabajo de 700 agentes de atención al cliente.</h4>
+        <p>2.3 millones de conversaciones en un mes. Resolución en 2 min (antes 11). Impacto: USD $40M. Después, el CEO admitió: <strong>"fuimos demasiado lejos"</strong> y volvieron a contratar humanos. La lección: AI sola no escala. AI + equipo que la opere = ahí está el valor real.</p>
+        <div class="msrc" style="margin-top:12px">Klarna, Feb 2024 &middot; <a href="https://www.klarna.com/international/press/klarna-ai-assistant-handles-two-thirds-of-customer-service-chats-in-its-first-month/" target="_blank">Fuente</a> | CEO: "We went too far" &middot; <a href="https://mlq.ai/news/klarna-ceo-admits-aggressive-ai-job-cuts-went-too-far-starts-hiring-again-after-us-ipo/" target="_blank">Fuente</a></div>
+    </div>
+
+    <div class="case an">
+        <div class="case-tag">Caso real &middot; Block (Jack Dorsey) &middot; Febrero 2026</div>
+        <h4>Cortó el 40% de su empresa (4.000 personas) para reestructurar con AI.</h4>
+        <p>No estaba en crisis: Q4 con $2.87B en profit bruto, +24% YoY. La acción subió 24% el día del anuncio. Dorsey dijo: <strong>"Creo que la mayoría de las empresas van a llegar a la misma conclusión dentro del próximo año."</strong></p>
+        <div class="msrc" style="margin-top:12px">CNBC / Fortune, Feb 2026 &middot; <a href="https://www.cnbc.com/2026/02/26/block-laying-off-about-4000-employees-nearly-half-of-its-workforce.html" target="_blank">Fuente</a></div>
+    </div>
+
+    <div class="case an">
+        <div class="case-tag">Argentina &middot; Infobae &middot; Marzo 2026</div>
+        <h4>Menos del 30% de las empresas industriales argentinas usa AI para tomar decisiones.</h4>
+        <p>3 de cada 10 todavía planifican con Excel. Menos del 5% tiene madurez digital real. Pero el 63% prioriza automatización en el mediano plazo. La barrera principal: <strong>falta de conocimiento y visión clara sobre oportunidades de AI.</strong></p>
+        <div class="msrc" style="margin-top:12px">Infobae, Mar 2026 &middot; <a href="https://www.infobae.com/economia/2026/03/29/adaptarse-o-ser-adaptado-detectan-un-bajo-nivel-de-aplicacion-de-ia-en-la-industria-argentina/" target="_blank">Fuente</a></div>
+    </div>
+</div>
+</section>
+
+<!-- 2. ADOPTION -->
+<section class="lt">
+<div class="w">
+    <div class="tag an">Nivel de adopción</div>
+    <div class="reading an">El 75% usa AI, pero <em>cada uno en su silo.</em> Pocos rediseñan procesos ó conectan departamentos.</div>
+
+    <div class="mrow single an">
+        <div class="mblock">
+            <div class="mnum gn-c">75%</div>
+            <div class="mlabel">usa AI a nivel personal o en casos aislados.</div>
+            <div class="mtext">El CEO lo usa. El equipo, poco. La operación no se toca. El uso es personal, la oportunidad es organizacional.</div>
+        </div>
+    </div>
+
+    <div class="grid3 an">
+        <div class="gcard"><div class="gcard-n">20%</div><div class="gcard-l">Uso personal</div><div class="gcard-d">ChatGPT para tareas propias del CEO.</div></div>
+        <div class="gcard"><div class="gcard-n">45%</div><div class="gcard-l">Casos aislados</div><div class="gcard-d">Una herramienta en un área. No conecta.</div></div>
+        <div class="gcard"><div class="gcard-n">10%</div><div class="gcard-l">CEO usa, equipo no</div><div class="gcard-d">Brecha de adopción interna.</div></div>
+    </div>
+    <div class="grid3 an">
+        <div class="gcard"><div class="gcard-n">15%</div><div class="gcard-l">Implementación deliberada</div><div class="gcard-d">Esfuerzo consciente. Pero sienten que van lento.</div></div>
+        <div class="gcard"><div class="gcard-n">10%</div><div class="gcard-l">Integrado en core</div><div class="gcard-d">AI en el día a día. Aun así no están satisfechos.</div></div>
+        <div class="gcard"><div class="gcard-n">25%</div><div class="gcard-l">Total que implementa</div><div class="gcard-d">Solo 1 de cada 4 pasó de "usar" a "implementar."</div></div>
+    </div>
+</div>
+</section>
+
+<!-- 3. URGENCY -->
+<section class="dk">
+<div class="w">
+    <div class="tag an">Urgencia y frenos</div>
+    <div class="reading an">El 80% siente urgencia. El 75% sigue haciéndolo solo. <em>Esa brecha entre sentir y hacer es donde están atrapados.</em></div>
+
+    <div class="mrow an">
+        <div class="mblock">
+            <div class="mnum yl">80%</div>
+            <div class="mlabel">siente que debería hacer más.</div>
+            <div class="mtext">45% FOMO. 35% culpa por no avanzar. Sólo 20% tranquilo. La urgencia es real, pero sin acción es sólo ansiedad.</div>
+        </div>
+        <div class="mblock">
+            <div class="mnum rd">45%</div>
+            <div class="mlabel">problema de ejecución, no de convicción.</div>
+            <div class="mtext">35% "avanzamos lento solos." 10% "no tengo a quien delegarle." El freno #1 no es plata, ni la industria, ni la tecnología. Es: <strong>"no tengo con quien."</strong></div>
+        </div>
+    </div>
+
+    <div class="mrow single an">
+        <div class="mblock">
+            <div class="mnum gn-c" style="font-size:56px">15%</div>
+            <div class="mlabel">probó, se frustró, y frenó.</div>
+            <div class="mtext">No necesitan motivación. Ya dieron el primer paso y se chocaron. Necesitan alguien que sepa implementar, no otra charla inspiracional.</div>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- 4. OPPORTUNITY -->
+<section class="lt">
+<div class="w">
+    <div class="tag an">Dónde ven impacto</div>
+    <div class="reading an">La oportunidad #1 es <em>vender mejor con lo que ya tenés.</em> Después, operar con menos horas. Recién ahí, los datos.</div>
+
+    <div class="mrow single an">
+        <div class="mblock">
+            <div class="mnum gn-c" style="font-size:64px">#1</div>
+            <div class="mlabel">Ventas y marketing: 80% lo prioriza.</div>
+            <div class="mtext">Gestión comercial, calificación de leads, pipeline, respuestas en WhatsApp, contenido. Donde más se pierde plata es donde más pica.</div>
+        </div>
+    </div>
+
+    <div class="rank an">
+        <div class="rk"><div class="rk-n">#2</div><div><h4>Operaciones y producción: 70%</h4><p>Logística, calidad, control. Lo que mueve la caja.</p></div></div>
+        <div class="rk"><div class="rk-n">#3</div><div><h4>Datos y decisiones: 65%</h4><p>KPIs en tiempo real, BI, dashboards automáticos. Dejar de ser el dashboard humano.</p></div></div>
+        <div class="rk"><div class="rk-n">#4</div><div><h4>Atención al cliente: 45%</h4><p>Post-venta, cobranzas, soporte, respuestas de primer contacto.</p></div></div>
+        <div class="rk"><div class="rk-n" style="opacity:.3">#5</div><div><h4 style="opacity:.5">Admin y finanzas: 40%</h4><p>Conciliaciones, facturación, cobranzas.</p></div></div>
+    </div>
+
+    <div class="wtp an">
+        <div class="wtp-n">95%</div>
+        <div>
+            <h4>invertiría algo en resolver esto.</h4>
+            <p>Solo 1 de 20 dijo $0. El 40% pondría $2.000 o más por mes. La disposición existe. <strong>Falta cerrar el cómo y el con quién.</strong></p>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- 5. WHAT THEY WANT TO SOLVE -->
+<section>
+<div class="w">
+    <div class="tag an">Lo que quieren resolver</div>
+    <div class="reading an">Si pudieran resolver <em>una cosa con AI en 6 meses</em>, esto es lo que dijeron:</div>
+
+    <div class="rank an">
+        <div class="rk"><div class="rk-n" style="font-size:44px">1</div><div><h4>Automatizar procesos operativos: 40%</h4><p>Registración bancaria, comprobantes, ERP, carga de datos, control de presentismo, embudo comercial, integración productiva. Los procesos que consumen horas y no agregan valor. 8 de 20 lo mencionaron.</p></div></div>
+        <div class="rk"><div class="rk-n" style="font-size:44px">2</div><div><h4>Comunicación y atención al cliente: 20%</h4><p>Post-venta, cobranzas, WhatsApp automatizado, chatbots que convivan con operadores humanos. Cuando el volumen supera al equipo. 4 de 20.</p></div></div>
+        <div class="rk"><div class="rk-n" style="font-size:44px">3</div><div><h4>KPIs y dashboards en tiempo real: 15%</h4><p>Datos conectados a Power BI. Documentación dinámica. Indicadores que se actualicen solos sin depender de alguien. 3 de 20.</p></div></div>
+    </div>
+
+    <div class="reading an" style="font-size:24px;margin-top:16px">Las 3 categorías apuntan al mismo lugar: <em>hacer más con la misma gente.</em> Nadie dijo "quiero reemplazar empleados." Dijeron: "quiero que dejen de hacer lo que una máquina puede hacer."</div>
+</div>
+</section>
+
+<!-- 6. EVIDENCE FROM GROUP -->
+<section class="gn">
+<div class="w">
+    <div class="tag an">Casos reales del dataset</div>
+    <div class="reading an">Algunas empresas del relevamiento <em>ya tienen AI en producción.</em> Ninguna lo escala.</div>
+
+    <p class="prose an">No viene de un reporte global. Viene de empresas argentinas reales. Tienen la herramienta funcionando, pero falta la visión de expansión y el equipo para llevarla al resto de la operación.</p>
+
+    <div class="praise">
+        <div class="pc an"><div class="pc-i">01</div><div><h4>Empresa industrial</h4><div class="pc-w">AI predictiva en planta: anticipa roturas en proceso productivo y frena antes de que falle. Conciliaciones bancarias automatizadas.</div><div class="pc-n">Están las herramientas pero no la visión de expansión.</div></div></div>
+        <div class="pc an d1"><div class="pc-i">02</div><div><h4>Empresa agroindustrial</h4><div class="pc-w">Alertas automatizadas en proceso productivo. Manejo de datos con generación de alertas en tiempo real. Caso exitoso declarado por la gerencia operativa.</div><div class="pc-n">Todavía no pudieron hacer foco en escalar. Tienen la herramienta, falta acompañamiento.</div></div></div>
+        <div class="pc an d2"><div class="pc-i">03</div><div><h4>Empresa de servicios</h4><div class="pc-w">Agentes de AI operando en el día a día. Uno de los niveles de adopción más altos del dataset. Quieren expandir a post-venta y cobranzas.</div><div class="pc-n">Avanzan más lento de lo que quisieran, incluso siendo los más integrados.</div></div></div>
+    </div>
+
+    <div class="reading an" style="font-size:26px">Las empresas que ya implementaron AI tienen el mismo problema que las que no: <em>falta capacidad de ejecución.</em> El 45% del dataset está trabado ejecutando solo.</div>
+</div>
+</section>
+
+<!-- 7. THE GAP -->
+<section class="lt">
+<div class="w">
+    <div class="tag an">El gap</div>
+    <div class="reading an">Dónde estamos hoy, <em>y dónde podríamos estar en meses</em> si cerramos la brecha.</div>
+
+    <div class="journey an">
+        <div class="j-ends">
+            <div class="j-side j-from">
+                <h3>Hoy</h3>
+                <ul>
+                    <li>75% usa AI en silo, sin integración</li>
+                    <li>45% no tiene con quien ejecutar</li>
+                    <li>80% siente urgencia sin actuar</li>
+                    <li>Casos en producción, ninguno escala</li>
+                    <li>El dashboard es humano</li>
+                </ul>
+            </div>
+            <div class="j-side j-to">
+                <h3>En 6 meses</h3>
+                <ul>
+                    <li>Equipo comercial con herramientas AI (80% lo pide)</li>
+                    <li>Procesos automatizados (70% lo pide)</li>
+                    <li>KPIs sin Excel (65% lo quiere)</li>
+                    <li>Capacidad instalada en tu gente</li>
+                    <li>Escalar facturación sin headcount</li>
+                </ul>
+            </div>
+        </div>
+        <div style="position:relative;margin-top:20px">
+            <div class="j-line"></div>
+            <div class="j-bridge">
+                <div class="j-step">
+                    <h4>Mapear y repensar</h4>
+                    <p>No meter AI a lo que hay. Rediseñar el flujo de trabajo. Ahí está el 2.8x de impacto (McKinsey).</p>
+                </div>
+                <div class="j-step">
+                    <h4>Implementar con expertise</h4>
+                    <p>El 85% quiere ayuda externa o capacitación. Solo el 10% quiere seguir solo.</p>
+                </div>
+                <div class="j-step">
+                    <h4>Dejar autonomía</h4>
+                    <p>Que tu equipo opere AI sin depender de nadie. El 45% del dataset pidió exactamente esto.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</section>
+
+<!-- 8. VOICES -->
+<section class="dk">
+<div class="w">
+    <div class="tag an">Voces</div>
+    <div class="reading an">Lo que dicen los que <em>ya se movieron.</em> Founders argentinos y referentes globales.</div>
+
+    <div class="qg">
+        <div class="qc hl an"><div class="qc-t ar">Argentina</div><blockquote>"La velocidad de evolucion de la IA penaliza más la inacción que el error controlado."</blockquote><cite>Martin Migoya, CEO Globant &middot; <a href="https://www.laecuaciondigital.com/empresas/eventos/globant-converge-2025-senala-el-paso-de-la-experimentacion-a-la-madurez-operativa-de-la-inteligencia-artificial/" target="_blank">Fuente</a></cite></div>
+        <div class="qc hl an d1"><div class="qc-t ar">Argentina</div><blockquote>"En cinco años vamos a tener 10.000 desarrolladores. No porque los echemos, sino porque no vamos a contratar."</blockquote><cite>Marcos Galperin, MercadoLibre &middot; <a href="https://www.bloomberglinea.com/latinoamerica/argentina/por-que-la-app-de-mercadolibre-podria-pasar-a-ser-irrelevante-segun-marcos-galperin/" target="_blank">Fuente</a></cite></div>
+        <div class="qc an"><div class="qc-t ar">Argentina</div><blockquote>"Las organizaciones han sido mucho más lentas en adoptar AI de lo que han sido los individuos."</blockquote><cite>Guibert Englebienne, Globant &middot; <a href="https://www.forbesuruguay.com/innovacion/guibert-englebienne-quiero-cada-persona-cada-escritorio-tenga-acceso-le-saque-jugo-ia-n66799" target="_blank">Fuente</a></cite></div>
+        <div class="qc an d1"><div class="qc-t ar">Argentina</div><blockquote>"Escalamos servicio al cliente sin contratar más personas."</blockquote><cite>Ariel Szarfsztejn, CEO MercadoLibre &middot; <a href="https://www.lanacion.com.ar/tecnologia/el-futuro-ya-llego-como-las-empresas-argentinas-estan-incorporando-la-ia-en-el-corazon-de-sus-nid04042026/" target="_blank">Fuente</a></cite></div>
+        <div class="qc an"><div class="qc-t gl">Global</div><blockquote>"Antes de pedir más gente, demuestren por qué AI no puede hacer el trabajo."</blockquote><cite>Tobi Lutke, CEO Shopify &middot; <a href="https://techcrunch.com/2025/04/07/shopify-ceo-tells-teams-to-consider-using-ai-before-growing-headcount/" target="_blank">Fuente</a></cite></div>
+        <div class="qc an d1"><div class="qc-t gl">Global &middot; 2026</div><blockquote>"La mayoría de las empresas van a llegar a la misma conclusión y hacer cambios estructurales similares dentro del próximo año."</blockquote><cite>Jack Dorsey, CEO Block (tras cortar 40% de su empresa) &middot; Feb 2026 &middot; <a href="https://www.cnbc.com/2026/02/26/block-laying-off-about-4000-employees-nearly-half-of-its-workforce.html" target="_blank">Fuente</a></cite></div>
+        <div class="qc an"><div class="qc-t gl">Global</div><blockquote>"Va a existir la empresa de una sola persona que valga mil millones de dólares. Algo inimaginable sin AI."</blockquote><cite>Sam Altman, CEO OpenAI &middot; <a href="https://fortune.com/2024/02/04/sam-altman-one-person-unicorn-silicon-valley-founder-myth/" target="_blank">Fuente</a></cite></div>
+        <div class="qc an d1"><div class="qc-t gl">Global</div><blockquote>"10 ingenieros con AI hacen el trabajo de 50 a 100."</blockquote><cite>Garry Tan, CEO Y Combinator &middot; Mar 2025 &middot; <a href="https://www.cnbc.com/2025/03/15/y-combinator-startups-are-fastest-growing-in-fund-history-because-of-ai.html" target="_blank">Fuente</a></cite></div>
+    </div>
+
+    <div class="reading an" style="font-size:24px">Esto no es burbuja. Jack Dorsey cortó 4.000 personas <em>sin estar en crisis.</em> Altman dice que para fin de 2026 AI va a estar adentro de todo. En Argentina la adopción va a ser más lenta, no porque la tecnología no esté, sino porque <em>requiere cambiar la cabeza.</em> Ahí es donde el expertise hace la diferencia.</div>
+</div>
+</section>
+
+<!-- 9. WHAT THE GROUP WANTS + CLOSE -->
+<section class="dk" style="border-top:1px solid rgba(255,255,255,.04)">
+<div class="w">
+    <div class="tag an">Qué piden los CEOs</div>
+    <div class="reading an">El 85% quiere ayuda. Pero no quiere depender: <em>quiere entender.</em></div>
+
+    <div class="mrow an">
+        <div class="mblock">
+            <div class="mnum gn-c">45%</div>
+            <div class="mlabel">capacitar a alguien del equipo.</div>
+            <div class="mtext">Quieren que su gente aprenda. No quieren un consultor que se vaya y los deje sin saber.</div>
+        </div>
+        <div class="mblock">
+            <div class="mnum gn-c">40%</div>
+            <div class="mlabel">traer a alguien externo.</div>
+            <div class="mtext">Que implemente, que muestre, que deje capacidad instalada. Solo 10% quiere seguir solo.</div>
+        </div>
+    </div>
+
+    <div class="reading an" style="margin-top:48px">Y cuando se les pregunta cuánto invertirían, aparecen <em>tres escalones claros:</em></div>
+
+    <div class="grid3 an" style="margin-top:32px">
+        <div class="gcard"><div class="gcard-n">55%</div><div class="gcard-l">Hasta US$2.000/mes</div><div class="gcard-d">Diagnóstico + primeros pasos. Mapeo de oportunidades, 1-2 pilotos chicos. Para empezar a ver ROI antes de escalar.</div></div>
+        <div class="gcard"><div class="gcard-n">35%</div><div class="gcard-l">US$2.000–4.000/mes</div><div class="gcard-d">Implementación con acompañamiento en 1-2 áreas. Capacidad instalada en el equipo. ROI medido.</div></div>
+        <div class="gcard"><div class="gcard-n">5%</div><div class="gcard-l">US$4.000+/mes</div><div class="gcard-d">Squad dedicado, transformación cross-áreas. Para los que ya probaron y quieren escalar fuerte.</div></div>
+    </div>
+
+    <div class="mrow single an" style="margin-top:32px">
+        <div class="mblock">
+            <div class="mnum gn-c" style="font-size:56px">US$2.100/mes</div>
+            <div class="mlabel">es el promedio de inversión declarada.</div>
+            <div class="mtext">Mediana en US$2.000. El 95% invertiría algo. Solo 1 de 20 dijo $0.</div>
+        </div>
+    </div>
+
+    <div class="j-ends an" style="margin-top:48px">
+        <div class="j-side j-from">
+            <h3>Cómo se está pensando</h3>
+            <ul>
+                <li>Capacitar a un junior que vaya área por área</li>
+                <li>Probar herramientas sueltas a ver qué funciona</li>
+                <li>Avanzar sin tener claro el ROI</li>
+                <li>Presupuesto de experimento</li>
+            </ul>
+        </div>
+        <div class="j-side j-to">
+            <h3>Lo que el negocio demanda</h3>
+            <ul>
+                <li>Senior con 15+ años en negocio y software</li>
+                <li>Procesos rediseñados, no parchados</li>
+                <li>ROI medido antes de escalar</li>
+                <li>Inversión proporcional al impacto</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="reading an" style="font-size:26px;margin-top:16px">Jim Collins dice: <em>"La tecnología es un acelerador del momentum, no un creador."</em> Primero saber para dónde vas. Después, la tecnología te lleva más rápido. Ese es el orden.</div>
+
+    <div class="case an" style="margin-top:40px;background:rgba(71,255,203,.04);border-color:var(--g)">
+        <div class="case-tag">¿Cómo empezar?</div>
+        <h4>Auditoría AI-ROI de 2 horas, sin costo.</h4>
+        <p>Nos sentamos 2 horas con vos y 1-2 personas clave de tu equipo. Salimos con un mapa de 3-5 oportunidades de AI priorizadas por ROI esperado, esfuerzo de implementación, y riesgo. No es comercial disfrazado: es trabajo real, sin costo.</p>
+        <p style="margin-top:12px">Si después querés avanzar con nosotros, hablamos. Si no, te queda el mapa para ejecutar con quien quieras.</p>
+    </div>
+
+    <div class="fn an" style="margin-top:48px">
+        <p>¿Querés esa auditoría gratis? Escribinos a <strong>hey@braintly.com</strong> o llamanos al <strong>+54 9 11 5460-0467</strong> y lo agendamos. También mandamos la encuesta completa de madurez AI si te interesa medir dónde está tu empresa.</p>
+    </div>
+</div>
+</section>
+
+<!-- GRACIAS + FUENTES -->
+<section style="background:#fff;padding:120px 0 64px;position:relative;overflow:hidden">
+<div class="w">
+    <div class="tag an">[Cierre]</div>
+    <div class="an gracias-title" style="font-family:var(--h);font-size:180px;font-weight:700;line-height:.95;letter-spacing:-.04em;margin-bottom:64px;color:var(--d)">Gracias<span style="color:var(--gd)">.</span></div>
+
+    <div class="an d1" style="display:flex;gap:16px;margin-bottom:80px">
+        <a href="https://braintly.com" target="_blank" aria-label="braintly.com" class="contact-item" style="display:flex;align-items:center;justify-content:center;width:64px;height:64px;background:var(--f);border-radius:50%;color:var(--d);transition:all .2s ease">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gd)"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/company/braintly/" target="_blank" aria-label="LinkedIn" class="contact-item" style="display:flex;align-items:center;justify-content:center;width:64px;height:64px;background:var(--f);border-radius:50%;color:var(--d);transition:all .2s ease">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" style="color:var(--gd)"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 1 1 8.3 6.5a1.78 1.78 0 0 1-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0 0 13 14.19a.66.66 0 0 0 0 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 0 1 2.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
+        </a>
+    </div>
+
+    <div class="an d1" style="padding-top:40px;border-top:1px solid rgba(0,0,0,.08)">
+        <div style="font-family:var(--h);font-size:11px;color:rgba(0,0,0,.25);letter-spacing:.06em;text-transform:uppercase;margin-bottom:20px">Fuentes</div>
+        <ul style="list-style:none;padding:0;margin:0;columns:3;column-gap:32px">
+                    <li style="font-size:11px;color:rgba(0,0,0,.3);margin-bottom:6px;line-height:1.5">NVIDIA "State of AI" (2026), 91% de empresas usan AI. <a href="https://blogs.nvidia.com/blog/state-of-ai-report-2026/" target="_blank" style="color:rgba(0,0,0,.4);text-decoration:underline;text-underline-offset:2px">Ver</a></li>
+                    <li style="font-size:11px;color:rgba(0,0,0,.3);margin-bottom:6px;line-height:1.5">Deloitte "State of AI in the Enterprise" (2026). <a href="https://www.deloitte.com/us/en/what-we-do/capabilities/applied-artificial-intelligence/content/state-of-ai-in-the-enterprise.html" target="_blank" style="color:rgba(0,0,0,.4);text-decoration:underline;text-underline-offset:2px">Ver</a></li>
+                    <li style="font-size:11px;color:rgba(0,0,0,.3);margin-bottom:6px;line-height:1.5">BCG "AI in Tech Function" + "$200B Agentic AI" (2026). <a href="https://www.bcg.com/publications/2026/how-ai-is-paying-off-in-the-tech-function" target="_blank" style="color:rgba(0,0,0,.4);text-decoration:underline;text-underline-offset:2px">Ver</a></li>
+                    <li style="font-size:11px;color:rgba(0,0,0,.3);margin-bottom:6px;line-height:1.5">PwC 29th CEO Survey (Ene 2026), 4.454 CEOs. <a href="https://www.pwc.com/gx/en/news-room/press-releases/2026/pwc-2026-global-ceo-survey.html" target="_blank" style="color:rgba(0,0,0,.4);text-decoration:underline;text-underline-offset:2px">Ver</a></li>
+                    <li style="font-size:11px;color:rgba(0,0,0,.3);margin-bottom:6px;line-height:1.5">McKinsey "State of AI" (Mar 2025). <a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai" target="_blank" style="color:rgba(0,0,0,.4);text-decoration:underline;text-underline-offset:2px">Ver</a></li>
+                    <li style="font-size:11px;color:rgba(0,0,0,.3);margin-bottom:6px;line-height:1.5">Block / Jack Dorsey layoffs (Feb 2026). <a href="https://www.cnbc.com/2026/02/26/block-laying-off-about-4000-employees-nearly-half-of-its-workforce.html" target="_blank" style="color:rgba(0,0,0,.4);text-decoration:underline;text-underline-offset:2px">Ver</a></li>
+                    <li style="font-size:11px;color:rgba(0,0,0,.3);margin-bottom:6px;line-height:1.5">Klarna AI (Feb 2024) + CEO "we went too far" (2026). <a href="https://www.klarna.com/international/press/klarna-ai-assistant-handles-two-thirds-of-customer-service-chats-in-its-first-month/" target="_blank" style="color:rgba(0,0,0,.4);text-decoration:underline;text-underline-offset:2px">Ver</a></li>
+                    <li style="font-size:11px;color:rgba(0,0,0,.3);margin-bottom:6px;line-height:1.5">Infobae, AI en industria argentina (Mar 2026). <a href="https://www.infobae.com/economia/2026/03/29/adaptarse-o-ser-adaptado-detectan-un-bajo-nivel-de-aplicacion-de-ia-en-la-industria-argentina/" target="_blank" style="color:rgba(0,0,0,.4);text-decoration:underline;text-underline-offset:2px">Ver</a></li>
+                    <li style="font-size:11px;color:rgba(0,0,0,.3);margin-bottom:6px;line-height:1.5">La Nación: MercadoLibre, Despegar, Uala, Arcor (Abr 2026). <a href="https://www.lanacion.com.ar/tecnologia/el-futuro-ya-llego-como-las-empresas-argentinas-estan-incorporando-la-ia-en-el-corazon-de-sus-nid04042026/" target="_blank" style="color:rgba(0,0,0,.4);text-decoration:underline;text-underline-offset:2px">Ver</a></li>
+                    <li style="font-size:11px;color:rgba(0,0,0,.3);margin-bottom:6px;line-height:1.5">Microsoft Argentina (Mar 2025). <a href="https://news.microsoft.com/es-xl/encuesta-de-microsoft-revela-que-el-70-de-las-mipymes-argentinas-quieren-adoptar-la-ia/" target="_blank" style="color:rgba(0,0,0,.4);text-decoration:underline;text-underline-offset:2px">Ver</a></li>
+                    <li style="font-size:11px;color:rgba(0,0,0,.3);margin-bottom:6px;line-height:1.5">SAP (Mar 2025), 200 decisores argentinos. <a href="https://news.sap.com/latinamerica/2025/03/la-mitad-de-las-companias-argentinas-ya-obtiene-resultados-de-sus-inversiones-en-inteligencia-artificial/" target="_blank" style="color:rgba(0,0,0,.4);text-decoration:underline;text-underline-offset:2px">Ver</a></li>
+                    <li style="font-size:11px;color:rgba(0,0,0,.3);margin-bottom:6px;line-height:1.5">Migoya / Englebienne, Globant (2025). <a href="https://stayrelevant.globant.com/en/technology/high-tech/healthy-dose-of-realism-on-ai-by-martin-migoya/" target="_blank" style="color:rgba(0,0,0,.4);text-decoration:underline;text-underline-offset:2px">Ver</a></li>
+                    <li style="font-size:11px;color:rgba(0,0,0,.3);margin-bottom:6px;line-height:1.5">Galperin, MercadoLibre (Mar 2026). <a href="https://www.bloomberglinea.com/latinoamerica/argentina/por-que-la-app-de-mercadolibre-podria-pasar-a-ser-irrelevante-segun-marcos-galperin/" target="_blank" style="color:rgba(0,0,0,.4);text-decoration:underline;text-underline-offset:2px">Ver</a></li>
+                    <li style="font-size:11px;color:rgba(0,0,0,.3);margin-bottom:6px;line-height:1.5">Altman "One-person unicorn" (Feb 2024). <a href="https://fortune.com/2024/02/04/sam-altman-one-person-unicorn-silicon-valley-founder-myth/" target="_blank" style="color:rgba(0,0,0,.4);text-decoration:underline;text-underline-offset:2px">Ver</a></li>
+                    <li style="font-size:11px;color:rgba(0,0,0,.3);margin-bottom:6px;line-height:1.5">Lutke, Shopify (Abr 2025). <a href="https://techcrunch.com/2025/04/07/shopify-ceo-tells-teams-to-consider-using-ai-before-growing-headcount/" target="_blank" style="color:rgba(0,0,0,.4);text-decoration:underline;text-underline-offset:2px">Ver</a></li>
+                    <li style="font-size:11px;color:rgba(0,0,0,.3);margin-bottom:6px;line-height:1.5">Garry Tan, YC (Mar 2025). <a href="https://www.cnbc.com/2025/03/15/y-combinator-startups-are-fastest-growing-in-fund-history-because-of-ai.html" target="_blank" style="color:rgba(0,0,0,.4);text-decoration:underline;text-underline-offset:2px">Ver</a></li>
+                    <li style="font-size:11px;color:rgba(0,0,0,.3);margin-bottom:6px;line-height:1.5">Anthropic Mythos / Glasswing (Abr 2026). <a href="https://techcrunch.com/2026/04/07/anthropic-mythos-ai-model-preview-security/" target="_blank" style="color:rgba(0,0,0,.4);text-decoration:underline;text-underline-offset:2px">Ver</a></li>
+                    <li style="font-size:11px;color:rgba(0,0,0,.3);margin-bottom:6px;line-height:1.5">Collins, Good to Great (2001), "Technology Accelerators."</li>
+                    <li style="font-size:11px;color:rgba(0,0,0,.3);margin-bottom:6px;line-height:1.5">Encuesta propia Braintly (Abr 2026), 20 CEOs argentinos founder-led. Datos propios.</li>
+        </ul>
+    </div>
+</div>
+</section>
+
+<div class="ft"><div class="w">Braintly &middot; braintly.com</div></div>
+
+<script>
+const o=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');o.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.an,.bondi').forEach(e=>o.observe(e));
+</script>
+</body>
+</html>
